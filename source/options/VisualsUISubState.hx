@@ -40,22 +40,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'bool',
 			true);
 		addOption(option);
-
-		var option:Option = new Option('Hide HUD',
-			'If checked, hides most HUD elements.',
-			'hideHud',
-			'bool',
-			false);
-		addOption(option);
 		
-		var option:Option = new Option('Time Bar:',
-			"What should the Time Bar display?",
-			'timeBarType',
-			'string',
-			'Time Left',
-			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
-		addOption(option);
-
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",
 			'flashing',
@@ -77,11 +62,6 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Health Bar Transparency',
-			'How much transparent should the health bar and icons be.',
-			'healthBarAlpha',
-			'percent',
-			1);
 		option.scrollSpeed = 1.6;
 		option.minValue = 0.0;
 		option.maxValue = 1;
