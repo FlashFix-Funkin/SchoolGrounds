@@ -2219,7 +2219,7 @@ class PlayState extends MusicBeatState
 
 	public function updateScore(miss:Bool = false)
 	{
-		scoreTxt.text = 'Score: ' + songScore
+		scoreTxt.text = 'Score: ' + songScore;
 
 		if(ClientPrefs.scoreZoom && !miss && !cpuControlled)
 		{
