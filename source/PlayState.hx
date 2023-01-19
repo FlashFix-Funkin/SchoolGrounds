@@ -1483,7 +1483,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public function reloadHealthBarColors() {
-		if('Psych Engine' = !ClientPrefs.baseGameUI) 
+		if(ClientPrefs.baseGameUI != 'Psych Engine') 
 		{
 			healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
 			healthBar.updateBar();
