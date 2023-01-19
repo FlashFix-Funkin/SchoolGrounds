@@ -77,8 +77,8 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 		
-		var option:Option = new Option('Original Friday Night Funkin UI',
-			"If unchecked, the user interface will revert to the Psych Engine UI.",
+		var option:Option = new Option('Engine HUD',
+			"Switch betweens different HUDs from other versions of FNF",
 			'baseGameUI', 
 			'string',
 			'Base FNF',
