@@ -167,6 +167,16 @@ class PlayState extends MusicBeatState
 	public var camZoomingDecay:Float = 1;
 	private var curSong:String = "";
 
+
+	var bf_xCAM:Float = 0;
+	var bf_yCAM:Float = 0;
+	var camAmount:Float = 15;
+	var dad_xCAM:Float = 0;
+	var dad_yCAM:Float = 0;
+	var gf_xCAM:Float = 0;
+	var gf_yCAM:Float = 0;
+
+
 	public var gfSpeed:Int = 1;
 	public var health:Float = 1;
 	public var combo:Int = 0;
@@ -2993,7 +3003,28 @@ class PlayState extends MusicBeatState
 
 		if(!inCutscene) {
 			var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed, 0, 1);
-			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
+			var xAdd:Float = 0;
+			var yAdd:Float = 0;
+			var section:SwagSection = SONG.notes[Std.int(curStep / 16)];
+			if (generatedMusic && section != null && !endingSong && !isCameraOnForcedPos)
+			{
+				if (section.gfSection)
+				{
+					xAdd = gf_xCAM;
+					yAdd = gf_yCAM;
+				}
+				else if (section.mustHitSection)
+				{
+					xAdd = bf_xCAM;
+					yAdd = bf_yCAM;
+				}
+				else
+				{
+					xAdd = dad_xCAM;
+					yAdd = dad_yCAM;
+				}
+			}
+			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x + xAdd, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y + yAdd, lerpVal));
 			if(!startingSong && !endingSong && boyfriend.animation.curAnim != null && boyfriend.animation.curAnim.name.startsWith('idle')) {
 				boyfriendIdleTime += elapsed;
 				if(boyfriendIdleTime >= 0.15) { // Kind of a mercy thing for making the achievement easier to get as it's apparently frustrating to some playerss
@@ -4556,7 +4587,6 @@ class PlayState extends MusicBeatState
 			dad.heyTimer = 0.6;
 		} else if(!note.noAnimation) {
 			var altAnim:String = note.animSuffix;
-
 			if (SONG.notes[curSection] != null)
 			{
 				if (SONG.notes[curSection].altAnim && !SONG.notes[curSection].gfSection) {
@@ -4575,7 +4605,46 @@ class PlayState extends MusicBeatState
 				char.playAnim(animToPlay, true);
 				char.holdTimer = 0;
 			}
+
+			if (char == gf)
+				{
+					switch (Math.abs(note.noteData))
+					{
+						case 2:
+							gf_yCAM = -camAmount;
+							gf_xCAM = 0;
+						case 3:
+							gf_xCAM = camAmount;
+							gf_yCAM = 0;
+						case 1:
+							gf_yCAM = camAmount;
+							gf_xCAM = 0;
+						case 0:
+							gf_xCAM = -camAmount;
+							gf_yCAM = 0;
+					}
+				}
+				else
+				{
+					switch (Math.abs(note.noteData))
+					{
+						case 2:
+							dad_yCAM = -camAmount;
+							dad_xCAM = 0;
+						case 3:
+							dad_xCAM = camAmount;
+							dad_yCAM = 0;
+						case 1:
+							dad_yCAM = camAmount;
+							dad_xCAM = 0;
+						case 0:
+							dad_xCAM = -camAmount;
+							dad_yCAM = 0;
+					}
+				}
 		}
+	
+	
 
 		if (SONG.needsVoices)
 			vocals.volume = 1;
@@ -4643,20 +4712,53 @@ class PlayState extends MusicBeatState
 			health += note.hitHealth * healthGain;
 
 			if(!note.noAnimation) {
+				var daAlt = '';
+				if(note.noteType == 'Alt Animation') daAlt = '-alt';
 				var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))];
 
 				if(note.gfNote)
 				{
 					if(gf != null)
 					{
-						gf.playAnim(animToPlay + note.animSuffix, true);
+						gf.playAnim(animToPlay + daAlt, true);
 						gf.holdTimer = 0;
+						switch (Math.abs(note.noteData))
+						{
+							case 2:
+								gf_yCAM = -camAmount;
+								gf_xCAM = 0;
+							case 3:
+								gf_xCAM = camAmount;
+								gf_yCAM = 0;
+							case 1:
+								gf_yCAM = camAmount;
+								gf_xCAM = 0;
+							case 0:
+								gf_xCAM = -camAmount;
+								gf_yCAM = 0;
+						}
+					
 					}
 				}
 				else
 				{
-					boyfriend.playAnim(animToPlay + note.animSuffix, true);
+					boyfriend.playAnim(animToPlay + daAlt, true);
 					boyfriend.holdTimer = 0;
+					switch (Math.abs(note.noteData))
+						{
+							case 2:
+								bf_yCAM = -camAmount;
+								bf_xCAM = 0;
+							case 3:
+								bf_xCAM = camAmount;
+								bf_yCAM = 0;
+							case 1:
+								bf_yCAM = camAmount;
+								bf_xCAM = 0;
+							case 0:
+								bf_xCAM = -camAmount;
+								bf_yCAM = 0;
+						}
 				}
 
 				if(note.noteType == 'Hey!') {
