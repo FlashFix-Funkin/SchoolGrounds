@@ -76,6 +76,14 @@ class VisualsUISubState extends BaseOptionsMenu
 			'bool',
 			true);
 		addOption(option);
+		
+		var option:Option = new Option('Original Friday Night Funkin UI',
+			"If unchecked, the user interface will revert to the Psych Engine UI.",
+			'baseGameUI', 
+			'string',
+			'Base FNF',
+			['Psych Engine', 'Base Game']);
+		addOption(option);
 
 		var option:Option = new Option('Health Bar Transparency',
 			'How much transparent should the health bar and icons be.',
