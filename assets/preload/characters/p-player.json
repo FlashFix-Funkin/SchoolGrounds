@@ -1,0 +1,265 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				3,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Pico Idle Dance"
+		},
+		{
+			"offsets": [
+				21,
+				27
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "pico Up note0"
+		},
+		{
+			"offsets": [
+				84,
+				-80
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Pico Down Note0"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-48,
+				2
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Pico Note Right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				85,
+				-10
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Pico NOTE LEFT0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				3,
+				0
+			],
+			"anim": "firstDeath",
+			"fps": 24,
+			"name": "Pico dies",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-2,
+				0
+			],
+			"anim": "deathLoop",
+			"fps": 24,
+			"name": "Pico dead loop",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				80,
+				-38
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "Pico Down Miss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				83,
+				28
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "Pico MISS LEFT",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				28,
+				67
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "pico Up miss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-45,
+				50
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "Pico Miss Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-2,
+				33
+			],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "Pico Dead confirm",
+			"indices": []
+		},
+		{
+			"offsets": [
+				74,
+				-21
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "Dodge",
+			"indices": [],
+			"name": "Pico Dodge"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				94,
+				-37
+			],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "Pico ALT LEFT",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-45,
+				6
+			],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "Pico Alt Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				60,
+				-100
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "Pico Down Alt",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				70,
+				32
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "pico Up alt",
+			"indices": []
+		},
+		{
+			"offsets": [
+				82,
+				-40
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss-alt",
+			"indices": [],
+			"name": "Pico Down Miss"
+		},
+		{
+			"offsets": [
+				80,
+				26
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss-alt",
+			"indices": [],
+			"name": "Pico MISS LEFT"
+		},
+		{
+			"offsets": [
+				-41,
+				48
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss-alt",
+			"indices": [],
+			"name": "Pico Miss Right"
+		},
+		{
+			"offsets": [
+				27,
+				72
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss-alt",
+			"indices": [],
+			"name": "pico Up miss"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				3,
+				7
+			],
+			"anim": "hey",
+			"fps": 24,
+			"name": "picohey",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/picodarnmod",
+	"position": [
+		0,
+		300
+	],
+	"healthicon": "pico",
+	"flip_x": true,
+	"healthbar_colors": [
+		0,
+		255,
+		0
+	],
+	"camera_position": [
+		70,
+		-30
+	],
+	"sing_duration": 4,
+	"scale": 1
+}
