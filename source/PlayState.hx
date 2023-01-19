@@ -1183,10 +1183,10 @@ class PlayState extends MusicBeatState
 
 		switch(ClientPrefs.baseGameUI)
 		{
-			case: 'Base Game'
+			case 'Base Game':
 				scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
 				scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
-			case: 'Psych Engine'		
+			case 'Psych Engine':		
 				scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
 				scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 				scoreTxt.borderSize = 1.25;
