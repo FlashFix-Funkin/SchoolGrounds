@@ -1,0 +1,127 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "IDLE0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				20,
+				-39
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "DOWN0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				12,
+				39
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "UP0",
+			"indices": []
+		},
+		{
+			"offsets": [
+				1,
+				-2
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "RIGHT0"
+		},
+		{
+			"offsets": [
+				-3,
+				-3
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "LEFT0"
+		},
+		{
+			"offsets": [
+				71,
+				9
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18
+			],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "HEY0"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Daniel_Assets",
+	"position": [
+		0,
+		270
+	],
+	"healthicon": "face",
+	"flip_x": true,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4.1,
+	"scale": 1
+}
