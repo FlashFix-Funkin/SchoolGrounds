@@ -122,7 +122,7 @@ class StrumNote extends FlxSprite
 	public function postAddedToGroup() {
 		playAnim('static');
 		x += Note.swagWidth * noteData;
-		if (ClientPrefs.baseGameUI == 'Base Game'
+		if (ClientPrefs.baseGameUI == 'Base Game')
 		{
 			x += 5;
 		}
