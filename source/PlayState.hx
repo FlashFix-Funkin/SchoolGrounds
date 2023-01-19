@@ -1181,8 +1181,16 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
+		switch(ClientPrefs.baseGameUI)
+		{
+			case: 'Base Game'
+				scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
+				scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
+			case: 'Psych Engine'		
+				scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
+				scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				scoreTxt.borderSize = 1.25;
+		}
 		scoreTxt.scrollFactor.set();
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
@@ -1475,8 +1483,18 @@ class PlayState extends MusicBeatState
 	}
 
 	public function reloadHealthBarColors() {
-		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
-		healthBar.updateBar();
+		if('Psych Engine' = !ClientPrefs.baseGameUI) 
+		{
+			healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
+			healthBar.updateBar();
+		}
+		else
+		{
+			healthBar.createFilledBar(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
+				FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
+
+			healthBar.updateBar();
+		}
 	}
 
 	public function addCharacterToList(newCharacter:String, type:Int) {
@@ -2266,8 +2284,16 @@ class PlayState extends MusicBeatState
 
 	public function updateScore(miss:Bool = false)
 	{
-		scoreTxt.text = 'Score: ' + songScore;
-
+		switch(ClientPrefs.baseGameUI)
+		{
+			case 'Base Game':
+				scoreTxt.text = 'Score: ' + songScore;
+			case 'Psych Engine':
+				scoreTxt.text = 'Score: ' + songScore
+				+ ' | Misses: ' + songMisses
+				+ ' | Rating: ' + ratingName
+				+ (ratingName != '?' ? ' (${Highscore.floorDecimal(ratingPercent * 100, 2)}%) - $ratingFC' : '');
+		}
 		if(ClientPrefs.scoreZoom && !miss && !cpuControlled)
 		{
 			if(scoreTxtTween != null) {
