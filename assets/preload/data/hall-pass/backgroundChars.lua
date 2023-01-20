@@ -13,7 +13,7 @@ local curCharacter_YOffsets = {
 }
 
 
-local directory = "weeks/hall-pass/Characters/"
+local directory = "bgs/hall-pass/Characters/"
 
 local prev_CharacterAdded;
 

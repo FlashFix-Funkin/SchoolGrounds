@@ -1,4 +1,4 @@
-local directory = "bgs/cass"
+local directory = "bgs/cass/"
 
 function onCreatePost()
 	makeLuaSprite("sky", directory.."sky", -1400, -170)

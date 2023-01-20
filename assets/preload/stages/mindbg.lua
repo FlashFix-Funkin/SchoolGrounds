@@ -6,14 +6,19 @@ function onCreatePost()
 	makeLuaSprite("bgcity", "bgs/mindbg/bgcity", -470, 400)
 	setScrollFactor("bgcity", 0.25, 0.25)
 	addLuaSprite("bgcity", false)
+    setProperty("bgcity.velocity.x", -10)
 
-	makeLuaSprite("bgbuild", "bgs/mindbg/bgbuild", -680, -50)
-	setScrollFactor("bgbuild", 0.3, 0.5)
-	addLuaSprite("bgbuild", false)
+    local width = 0;
+    for i = -1, 3 do
+        makeLuaSprite("bgbuild"..i, "bgs/mindbg/bgbuild", -650 + i * width, 150)
+        width = getProperty('bgbuild'..i..'.width')
+        setScrollFactor("bgbuild"..i, 0.3, 0.5)
+        addLuaSprite("bgbuild"..i, false)
+    end
 
 	makeLuaSprite("thing", "bgs/mindbg/thing", -300, 200)
 	setScrollFactor("thing", 0.8, 0.8)
-	addLuaSprite("thing", false)
+    --addLuaSprite("thing", false)
 
 	makeLuaSprite("fog", "bgs/mindbg/fog", -450, -500)
 	setScrollFactor("fog", 0.7, 0.7)
@@ -36,6 +41,7 @@ function onCreatePost()
 	addLuaSprite("overlay", true)
 
 	addHaxeLibrary('FlxCamera', 'flixel')
+    addHaxeLibrary('FlxMath', 'flixel.math')
 	addHaxeLibrary('Math')
 	runHaxeCode([[
 		var camFG;
@@ -58,11 +64,14 @@ function onCreatePost()
 			game.getLuaObject(item).cameras = [camFG];
 		}
 
+
+
 		setVar('camFG', camFG);
 		setVar('DAD_POS_X', game.dad.x);
 		setVar('DAD_POS_Y', game.dad.y);
 		setVar('BF_POS_X', game.boyfriend.x);
 		setVar('BF_POS_Y', game.boyfriend.y);
+        setVar('bgBuildOffset', game.getLuaObject("bgbuild0").x);
 	]])
 end
 
@@ -74,6 +83,13 @@ function onUpdatePost(elapsed)
 		camFG.zoom = game.camGame.zoom;
 		camFG.target = game.camGame.target;
 		camFG.y = Math.sin(Conductor.songPosition / 10);
+
+        for (i in -1...2) {
+            var bgBuild = game.getLuaObject("bgbuild" + i);
+            var width = bgBuild.width + 1300;
+            bgBuild.x = getVar('bgBuildOffset') + FlxMath.lerp(0, -width, (Conductor.songPosition / 1000) % 1) + (i * width);
+        }
+
 	]])
 end
 
