@@ -2352,6 +2352,113 @@ class PlayState extends MusicBeatState
 	var lastReportedPlayheadPosition:Int = 0;
 	var songTime:Float = 0;
 
+	/*
+
+OOO000OOOOOOOOOOOOOOOOOOOOOOOOOOO0OOOOO00000000000000000000000KK000000000000000KKXXNNNNNNXXXNNNWWNNN
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO00000Okxxxxxxxxk000K00KKK00000000000000KXXXXXXXXXXNXXNNNNNN
+OOOOOOOOOOOOOOOOOOOOOOOOOOO0OOOOOOOOOOOOOOkxdddooddxxxxddddk000KKKK00000000K00000K00KXXNNNNWNXXNNNNN
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkOOOOOOOOxocclddxxdxxxddxkOxddx0K00KKKKK00000000000000KKXXNNNNNXXXNNX
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOkkkOkOOOkdloxOOO000000OkxdddkOkdok0KKKKKKKK0000000000000KKKKKKKKKK0KXK
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOkkkkkkkOkookOOOOOOOO0000000OxodkOxld0K0KKKKK000000000000000000000000O0K
+kkkkkkkkkkkkkkkkkkkkkxxkkkkkkkkkkkkkOxlxOOOOOOO00OOO000000OodkOdoOKKKKKK0KKKKKK00000000000000000000K
+lllllllllllllllllllllc;:lllllllllooool:loooxkOO0OOOO000000KkodOxoOKKKK0KKKKKKKKKKKKKK00000000KKKKKKX
+ccccccccccccccccccccc:;;c:cccccccccccc:cloxkOOOOOOOO00000000xdkdo0KKK00KKK00KKKKKKKK000000000KKKKXXN
+cccccccccccccccccccccc;cdoc:ccccccccccodkOOOOOOOOOOO00000000doookKK000000000KKKKKK00000000000KKKKXXN
+ccccccccc:;:cccccccccc::okxolc::cccloxkOOOOOOOOOOOOO0000000kccdO000KK00000000KKK0000000KK000KKKKXXNN
+cccccccclc:;;c:::ccccccc:okOkxdlccoxOOOOOOOOOOOOOOOOOO0000kodk0000KK000000000000000000KKKKKKKKKKXXNN
+xxxxxxxxxxxdoooolccc::cc:;cxkkkkkxddodddddxxdddddxxxxddxxdloxxOO00KK0000000000K000KKKKKKKKKKKKKKKXXN
+NNNNNNNNNXXNKkodkkkxddollc:cdkkkkkkxooddxxkkkkkOkkkkkkkkkkxxdddddxxkO00000000000KKKK000000KKKKKKKKXX
+NNNNNNNNNNX0kdlccoxxdddxkkkkkkkkkkkkkkOkkkkkkkkkkkkkkkkkkkkkkkOkkkxddddxO0000K0KKKK000000000000KKKKK
+NNNNNNNX0kdllllc::lddxkkkkkkkOkkkkkkkkOkkkkkkOkkkOkkkkOkkkkkkkkkkkkkkkxdddk000KKKK00000000000000KKKK
+NNNNXKkdllllcccldxkkxkkkkkkkkkkkkkkkkkkkkkOkkkkkkkkkkkkkkkkkkkOkkkkkkkkkkxddxOK00KK000000000000000KK
+NNKOxolcccccloxkkkxodkkkkkkkkkkkkkxdxOkkkkxooxkkkkkkkxkxdodkOOkkkxkkkkkkkkOkdoxO00KK0000000000000K00
+OxolcclcccoxkkkkxooxOOOOkkkkkkkkkkdokOkkkdl:oxdkkkkxxdddc:ldkkkOdlxOkOkkOkkkkkdok00KK0KK000000000000
+lcllcccldkkOkkkdoxO0KKOkxdxkkkkkOxldOkkkxddd0NXNNXXXXNXXOdxoxOkOkllkkkOkkkkkddkxlx00KK00000000000000
+lccc:cdkOkkkxolok00KXXXOox0000000dokOOOxokkxXNNNNNNNNNNNKxkxokOkkdcdOOOOO00KKxoxxox0KKK0000000000000
+cc:clxOkkxooc;o000XXXXKxxKXXXXXXKdd0OOkoxKdkXNNNNNNNNNNNNkxOooOkOkox0KKXXXXXNXxoxxlx0000000000000000
+c:cdkkxdddxdld00KXXXXKxd0K0000OOkloOkkdoKKdONNNNNNNNNNNNN0d0koxOOkddO0KKKXXXXNXxokxlk000000000000000
+;cxxdddxOOxldOO0KK0OxookOkkkkkkOkloxxdlkN0dONNNNNNNNNNNNNKdk0olxxxodkOOkOO00KKX0ddkooO00000000000000
+:lodxOOOOkodOOOOOxdoclxOkkkkkkxdl:cddclKN0dONXNNNNNNNNNNNXxxKdcodo:lkOOkkkkkOO00koxdlx00000000000000
+ldkOOOOOkookkkOkxdoc:dOkkkkOxooo:;dOkoxXNKdONXNNNNNNNNNNNXkkX0odOx;,ldkOkkkkkkkOOooxld00000000000000
+OOOOOOOOdoxkkkkkdoo:lkkkkkkxddxooookxoONNKdkNNNNNNNNNNNNNXOOXXxokdc:cooxkkkkkkkkOdldoo00000000000000
+OOOOOO0xldkkkkkxdolcdOkkkkkkkkodKOodddKNNXxxXNNNNNNNNNNNNXOkXNkodokOloddkOkkkkkkOxlcclO0000000000000
+OOOOOOOookkkkkkdooclkOkkkkkkkdo0NXdc:lOKXNOdKNNNNNNNNNNNNXkx0KxccdKNOoxkkkkkkkkkkkocolok000000000000
+OOOOOOxlxOOOkkkdoocokkkkkkkOxoONXOd;'lx0XNKxONNNNNNNNNNNNXkxkkl',o0XXxokOkkkkkdokOdlxOxodO0000000000
+OOOOOOookOOkOkxooocdOkOkkOOxlxNN0xl'..,,dXNOkXNNNNNNNNNNN0c,,,..';l0NOoxOkkkkOdokOxldkOkdok000000000
+OOOOOkldOOOkOkdoolldkOOOOkkooKKd,..,llooxKNXKXNNNNNNNNNNN0l;;;;;'..;x0dokOkkkOdoxOkloOOkkxodO0000000
+OOOOOdlxOkOkkxooolcokOkOOOdlkk;...cKWWMWXXNNNNNNNNNNNNNNNNOl:l0NKkc..,clxkkkkkdoxOkllxkkkkkooO000000
+OOOOOdlkOOkoldoooocokkkkOkood'.,;,ckXNXkoONNNXNNNNNNNNNNN0c;:oXWWW0d;..'oOkkkkookOklcodxkxxxook00000
+OOOOOookOko::looooclkOkkOdcl,.;o:;:cool:;dXNNNNNNNNNNNNNNx;;:cxKK0oox:..;xOkOxldkOxccoooxxc:lllk0000
+OOOOkodOxood:looooccxOkOkocc..dd;:c:::lc;oKNXNNXNNNNNNNNXd;;::::c:;:Ok. .okkkolkOOdclooooddclocck000
+kOOOkoxxodOkccooool:okkOkclOl,xx:dOdlxKk:oKNNXNNNNNNNNNNXd;cdl;;:lc:OK; .ckOxldkkkl:looooodocxOdok00
+okOOkooodOOOo:loool;ckOOd;cKKdxxckXXXXNOcdXNNNNNNNNNNNNNXx;oK0xdOKdcOXl:llxkolkOOxccllcllooollk0OO00
+lxOOko:okOOOd:loolc;:okkolokXK00lckOOOkl:ONNNNNNNNNNNNNNNk:l0XXNXKoc0X0Kk:dxlxOkkdlxkxoc:clllco00000
+cokOkolkOOkdl::ooccddlxkld0xONNN0l;::;;:xXNNNNNNNNXXNNNNNXxcldxxdl:oXNNKd:ccokkOxlokkkOkocodoccx0000
+ccdkOkkOkdodko:ll:dOkoldcxXkxXNNNKkxxxk0XNNNNNNXXXXXNNNNNNXK0kdlccdKNNXkdo:cokOkocodxxkOkdox0Okk0000
+cclxkkkxoldxdo:;:lkkkdl::xNOxKNNNNNNNNNNNNNNNNNXXXNXXNNNXXNNNNNXXXXNNN0xOkodldOdldocodddxxdldO000000
+cccokkocldxxkdc;;dkdool:':doo0NNNNXNNXNNNNNXKKKK00KKXXKKXNNNNNNNNXNNNNklddol:ldldOxod00OkxxdloO00000
+ccccdxddxkOOxcodlodooooc,:lccoOXNNNXXNNNNNNXKOO0OOO000OKXNNNNNNNNXXNN0lcllool::lxkkxoxK00000OkO00000
+cccclxkkkkkklcxddoolc::::lllolldxkOKXNNNNNNNNNNNNNNNNNNNNNNNNNNNXXKOxoloooooolloodkkdoO0000000000000
+cccccokkkkko:lollc:::coodl:coooollllodxkO0XNNNNNNNNNNNNNNNNXK0Oxdolclooo::lllllooddxkod0000000000000
+ccccclxkkkxc;cclodxkOOOOOoclollccooooollllloxO0XNNNNXXKOkxollllllol::clol:okkxdoolllddok000000000000
+ccccccoxkkdccdxOOOOOOOOOd::lodxo:lllllcclodddlldkkOkxxxllxxdocclcll:cdolc:ck0000Okxdddox000000000000
+ccccccldkkkkkOOOOOOOOOOkooxkO0OdlodxOklck0kddodkkkkkOOOdlok00dlxxol:ck0OxocoO000000000OO000000000000
+cccccccoxkkOkOOOOOOOO00OO00000OOOOkxxddk00x:lxkOOOOOOOOkd:o0KOddxxkocd0000OO000000000000000000000000
+ccccccccdkkkOOOOOOOOO000O00000Okxxdxk00000xoxOOOOOOOOOOOxox0000OkxdxxO000000000000000000000000000000
+:::cccccldkkOOOOOOOOOO0O0000kxk0XNNKK0000KkoxOOOOOOOkOOOdoO00000000OkxkO0000000000000000000000000000
+occ:cccccokkOOOOOOOOOOOOOOkxkKNWWWWWNXXK00OodOOOOOOOOOOkod000KKKXXNWWNOxxO00000000000000000000000000
+kxdlccccccdkOOOOOOOOOOOOxlxXWWWWWWWWWWWWNXKodOOOOOOOOOOxoOXXNNWWWWWWWWWXOxk000000000000000000000000K
+kkkkxolcc:lxOOOOOOOOOOkl;;cONWMWWWWWWWWWWWWOxKXXXXXKKXKxkNWWWWWWWWWWWWWWW0ooO00000000000000000000KKX
+OOOOOkxdlccokOOOOOOOOxkko:;:oONWWWWWWWWWWWW0xKNNNNNNNNOxKWWWWWWWWWWWWWWXko:;cx000000000000000000KKXX
+OOOOOOOkkdloxOOOOOOOxoOWW0l;;;lONWWWWWWWWWWXxONNNNXNNKxkWWWWWWWWWWWWXOdc;;:lxxxO000000000000000KKXXX
+OOOOOOOOOOkxxkOOOOOkoxOOKNN0d:;;lkXWWWWWWWMWkxXNNNXNNkxXWWWWWWWWNKkdc;;:cd0NWKooO00000000000000KKXXX
+OOOOOOOOOOOOkkOOOOOxxKWX0O0NWKdc;;cd0NWWWMMMKx0NNNNN0d0WWWWWWN0ko:;;:lx0XWWXOk0OxO0000000000000KKXXX
+OOOOOOOOOOOOOOOOOOOdoONWWN000XWXko:;:lxKNMWWWkkXNNNKxkNWWWXOxl:;;;cdOXWWN0OOKNWKdk0000000000000KKXXX
+OOOOOOO000000OOOOOxx0K00KKKXK000XNKxl:,:lxOXW0x0NXKxxXN0kdc;;;:lx0XWWX00O0XWWWKxox00000000000000KKXX
+OOOOO000KKK00OOOOkdOWWWXKKxkNWNKOO00K0xoc;;:oocxXkllool:;;:cokKNNX0000KNX00K0O0XKxk000000000000000KK
+OO00KKKKKKKK0OOOOxkNWWWWWWXkkNMWWWX0OOO00Oxl:;,:oc',,;:ldk0KK00000KNWWN0kOKXXNWWWOdO0000000000000000
+KKKKXXXXXXKKK00Okd0WWWWWWWW0odO0OxkXWNK0OOOOkkxollooodxO000O0KXNOddO00xxXWWWWWWWWXkk0000000000000000
+XKKKKKXXXXXKKK00xxXWWWWWWWMXkxdkd,,d0KK00kdooooooolokOOO0XNWWWXkc,;kNNkOWWWWWWWWWWOdO000000000000000
+XXXXXXKKKXXXKK00dxNWWWWWWWWNOokNKc,,;c:::;;;:;;;;;;;cllllloool:;:;c0MKkKWWWWWWWWWWXxx000000000000000
+WWWWWWWWNKKXXKKOx0WMWWWWWWWW0lkWNo,;::::::::;;;::::::;::::::;;;,,,dNWOkNWWWWWWWWWWWOok00000000000000
+MMMMMMMMWWXKXXKxkNWWWWWWWWWWKoxKd:;:::::::;,,',;:::;;;::::::::::;,oXNO0WWWNK000KK0Oklo00000000000000
+MMMMMMMMMMNKKXkxXWXKKKKKKKXWXdcc;:::::::;;,;:;',;;;,,;:::::::::::;;cdxKX0000KXNWWNX0xdxO000000000000
+MMMMMMMMMWNKX0dx000O0KXKK0O0k:,::::::::;,;:::,:dddxo:;:::::::::::::;,:x0KNWWWWWWWWWWWNKOkkO000000000
+MMMMMMMMMWKkkkOKNWWWWWWWWWWWXx:::::::::;;:::;;xKKKK0x:;::::::::::::::dXWWWWWWWWWWWWWWWWWNKOxkO000000
+WWMMWMMWXOxkKNWWWWWWWWWWWWWWWW0c;::::::::::;;dXWWWWNXOc;:::::::::::;oXWWWWWWWWWWWWWWWWWWWWWXOxk00000
+XXXXXXKOkONWWWWWWWWWWWWWWWWWWWWOc;::::::::;:xNWWMWWWWWXx:;::::::::;cKWWWWWWWWWWWWWWWWWWWWWWWWN0xk000
+XKKKKkk0NMWWWWWWWWWWWWWWWWWWWWWWx;;::::;:lxKWWWWWWMWWWWWXkl::::::;:kWWWWWWWWWWWWWWWWWWWWWWWWWWWXkxk0
+XKKKkdKWWWWWWWWWWWWWWWWWWWNNWWWWKc;:::;:dXWWWWWWWWWWWWWWWWNkl:;::;lXWWWWWWWWWWWWWWWWWWWWWWWWWWWWNkok
+
+	hi - peakies
+
+	the code below is a function chain that makies it eaiser to switch between the regular song and the erect difficulty, it is very bad.
+	*/
+
+	function loadErectSongInst():Void{
+		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song + '-erect'), 1, false);
+		FlxG.sound.music.onComplete = finishSong.bind();
+		vocals.play();
+	}
+
+	function loadErectSongVox():Void{
+		vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song + '-erect'));
+		FlxG.sound.list.add(vocals);
+		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(PlayState.SONG.song + '-erect')));
+	}
+
+	function loadSongInst():Void{
+		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
+		FlxG.sound.music.onComplete = finishSong.bind();
+		vocals.play();
+	}
+
+	function loadSongVox():Void{
+		vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+		FlxG.sound.list.add(vocals);
+		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(PlayState.SONG.song)));
+	}
+
 	function startSong():Void
 	{
 		startingSong = false;
@@ -2359,9 +2466,11 @@ class PlayState extends MusicBeatState
 		previousFrameTime = FlxG.game.ticks;
 		lastReportedPlayheadPosition = 0;
 
-		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
-		FlxG.sound.music.onComplete = finishSong.bind();
-		vocals.play();
+		if (storyDifficulty == 2)
+		loadErectSongInst();
+		else
+		loadSongInst();
+		
 
 		if(startOnTime > 0)
 		{
@@ -2419,13 +2528,10 @@ class PlayState extends MusicBeatState
 
 		curSong = songData.song;
 
-		if (SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+		if (storyDifficulty == 2)
+			loadErectSongVox();
 		else
-			vocals = new FlxSound();
-
-		FlxG.sound.list.add(vocals);
-		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(PlayState.SONG.song)));
+			loadSongVox();
 
 		notes = new FlxTypedGroup<Note>();
 		add(notes);
@@ -3774,19 +3880,6 @@ class PlayState extends MusicBeatState
 
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
-
-			case 'HUD Fade':
-					var charType:Int = Std.parseInt(value1);
-					if (Math.isNaN(charType))
-						charType = 0;
-					switch (charType)
-					{
-						case 0:
-							FlxTween.tween(camHUD, {alpha: 1}, 0.7, {ease: FlxEase.quadInOut});
-						case 1:
-							FlxTween.tween(camHUD, {alpha: 0}, 0.7, {ease: FlxEase.quadInOut});
-					}
-
 
 			case 'Change Scroll Speed':
 				if (songSpeedType == "constant")
