@@ -22,9 +22,18 @@ function onBeatHit()
         doTweenY('bartopY', 'bartop', -900, 0.35, 'circOut')
         doTweenY('barbotY', 'barbot', 625, 0.35, 'circOut')
     end
+
+    if curBeat == 355 then
+        doTweenY('bartopY', 'bartop', -850, 0.35, 'circOut')
+        doTweenY('barbotY', 'barbot', 550, 0.35, 'circOut')
+    end
+
+    if curBeat == 512 then
+        doTweenY('bartopY', 'bartop', -900, 0.35, 'circOut')
+        doTweenY('barbotY', 'barbot', 625, 0.35, 'circOut')
+    end
 end
 
 function onCreate()
     createLetterboxing()
 end
-

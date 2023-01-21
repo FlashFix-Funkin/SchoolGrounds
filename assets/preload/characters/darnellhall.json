@@ -1,136 +1,136 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				190,
 				15
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "darnell idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "darnell idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				182,
 				47
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "darnell up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "darnell up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				186,
 				-3
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "darnell down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "darnell down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				210,
 				4
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "darnell left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "darnell left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				185,
 				24
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "darnell right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "darnell right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				180,
 				70
 			],
-			"anim": "singUPmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "MISSdarnell up",
-			"indices": []
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "MISSdarnell up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				190,
 				-10
 			],
-			"anim": "singDOWNmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "MISSdarnell down",
-			"indices": []
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "MISSdarnell down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				224,
 				2
 			],
-			"anim": "singLEFTmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "MISSdarnell left",
-			"indices": []
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "MISSdarnell left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				180,
 				41
 			],
-			"anim": "singRIGHTmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "MISSdarnell right",
-			"indices": []
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "MISSdarnell right"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				220,
 				46
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "firstDeath",
-			"indices": [],
-			"name": "darnell dies"
+			"fps": 24,
+			"name": "darnell dies",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				195,
 				36
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "deathLoop",
-			"indices": [],
-			"name": "darnell die loop"
+			"fps": 24,
+			"name": "darnell die loop",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				195,
 				36
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "deathConfirm",
-			"indices": [],
-			"name": "darnell retry confirm"
+			"fps": 24,
+			"name": "darnell retry confirm",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
@@ -139,11 +139,11 @@
 		-440,
 		190
 	],
-	"healthicon": "darnellsk8",
+	"healthicon": "darnell",
 	"flip_x": true,
 	"healthbar_colors": [
-		255,
 		0,
+		255,
 		0
 	],
 	"camera_position": [

@@ -6,7 +6,7 @@
 				[
 					[
 						"Set Subtitle",
-						"You're",
+						"You're:alucard",
 						""
 					]
 				]
@@ -16,8 +16,18 @@
 				[
 					[
 						"Set Subtitle",
-						"DONE",
+						"DONE:alucard",
 						"0xFFFF0000"
+					]
+				]
+			],
+			[
+				51532.2580645161,
+				[
+					[
+						"Set Subtitle",
+						"",
+						""
 					]
 				]
 			],
@@ -25,8 +35,8 @@
 				51612.9032258064,
 				[
 					[
-						"Set Subtitle",
-						"",
+						"HUD Fade",
+						"0",
 						""
 					]
 				]
@@ -39,6 +49,7 @@
 						"You've:alucard",
 						""
 					]
+					
 				]
 			],
 			[
@@ -118,6 +129,11 @@
 						"Set Subtitle",
 						"dude:pico",
 						""
+					],
+					[
+						"Play Animation",
+						"bf",
+						"singLEFT"
 					]
 				]
 			],
@@ -128,6 +144,11 @@
 						"Set Subtitle",
 						"dude, duck...:pico",
 						""
+					],
+					[
+						"Play Animation",
+						"bf",
+						"singUP"
 					]
 				]
 			],
@@ -187,6 +208,11 @@
 					[
 						"Set Subtitle",
 						"",
+						""
+					],
+					[
+						"HUD Fade",
+						"1",
 						""
 					]
 				]
