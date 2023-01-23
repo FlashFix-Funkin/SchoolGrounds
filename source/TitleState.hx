@@ -28,6 +28,9 @@ import openfl.filters.ShaderFilter;
 import openfl.filters.BitmapFilter;
 import flixel.addons.display.FlxRuntimeShader;
 #end
+#if (desktop || android)
+import hxcodec.VideoSprite;
+#end
 import options.GraphicsSettingsSubState;
 //import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -75,6 +78,9 @@ class TitleState extends MusicBeatState
 	#end
 	var iconList:Array<String> = ['bf', 'dad', 'spooky', 'pico', 'mom', 'gf', 'parents', 'senpai-pixel', 'spirit-pixel', 'monster'];
 	var iconList2:Array<String> = ['gf', 'parents', 'senpai-pixel', 'spirit-pixel', 'monster'];
+	#if VIDEOS_ALLOWED
+	var videoSpr:VideoSprite;
+	#end
 
 	var iconGrid:FlxSprite;
 
@@ -293,6 +299,10 @@ class TitleState extends MusicBeatState
 		// bg.setGraphicSize(Std.int(bg.width * 0.6));
 		// bg.updateHitbox();
 		add(bg);
+
+		#if VIDEOS_ALLOWED
+		setupVideo();
+		#end
 
 		logoBl = new FlxSprite(titleJSON.titlex, titleJSON.titley);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
@@ -627,6 +637,10 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
+		#if VIDEOS_ALLOWED
+		if (sickBeats % 44 == 0) videoSpr.bitmap.time = 0;
+		#end
+
 		if(allowCamBeat)
 		{
 			FlxG.camera.zoom += 0.035;
@@ -946,8 +960,38 @@ class TitleState extends MusicBeatState
 				skipTime();
 				hasBeenOnThisStage = true;
 			}
-			
+			#if VIDEOS_ALLOWED
+			videoSpr.bitmap.time = 0;
+			#end
+			sickBeats = 0;
 			skippedIntro = true;
 		}
+	}
+
+	inline function setupVideo():Void {
+		#if (desktop || android)
+		var filePath:String = Paths.video('fnfcities');
+		#if sys
+		if (!FileSystem.exists(filePath))
+		#else
+		if (!OpenFLAssets.exists(filePath))
+		#end
+		{
+			FlxG.log.warn('Couldn\'t find video file: $filePath');
+			return;
+		}
+		videoSpr = new VideoSprite();
+		videoSpr.graphicLoadedCallback = function() {
+			for (item in [logoBl, gfDance, titleText, logo])
+			{
+				item.blend = LIGHTEN;
+			}
+		}
+		add(videoSpr);
+		videoSpr.playVideo(filePath);
+		#else
+		FlxG.log.warn('Platform not supported!');
+		return;
+		#end
 	}
 }

@@ -60,6 +60,10 @@ import FunkinLua;
 import DialogueBoxPsych;
 import Conductor.Rating;
 
+#if VIDEOS_ALLOWED
+import hxcodec.VideoSprite;
+#end
+
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
@@ -1615,9 +1619,30 @@ class PlayState extends MusicBeatState
 
 	public function startVideo(name:String)
 	{
+		#if VIDEOS_ALLOWED
+		inCutscene = true;
+		var filepath = Paths.video(name);
+		#if sys
+		if(!FileSystem.exists(filepath))
+		#else
+		if(!OpenFlAssets.exists(filepath))
+		#end
+		{
+			FlxG.log.warn('Couldnt find video file: ' + name);
+			startAndEnd();
+			return;
+		}
+		var videoSpr:VideoSprite = new VideoSprite();
+		videoSpr.playVideo(filepath);
+		videoSpr.finishCallback = function() {
+			startAndEnd();
+			return;
+		}
+		#else
 		FlxG.log.warn('Platform not supported!');
 		startAndEnd();
 		return;
+		#end
 	}
 
 	function startAndEnd()
@@ -3864,9 +3889,7 @@ class PlayState extends MusicBeatState
 				reloadHealthBarColors();
 			case 'Set Letterbox Size':
 				if (!letterboxxing) return;
-				var script = new FunkinLua('
-					setLetterboxSize($value1, $value2)
-				', false);
+				var script = new FunkinLua('setLetterboxSize($value1, $value2)', false);
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
 
