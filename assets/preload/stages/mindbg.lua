@@ -6,7 +6,7 @@ function onCreatePost()
 	makeLuaSprite("bgcity", "bgs/mindbg/bgcity", -470, 400)
 	setScrollFactor("bgcity", 0.25, 0.25)
 	addLuaSprite("bgcity", false)
-    setProperty("bgcity.velocity.x", -10)
+    setProperty("bgcity.velocity.x", 10)
 
     local width = 0;
     for i = -1, 3 do
@@ -34,6 +34,7 @@ function onCreatePost()
 	setBlendMode("rain", "add")
 	playAnim("rain", "rain", true)
 	setProperty('rain.alpha', 0.1)
+	setProperty('rain.flipX', true)
 	setScrollFactor("rain", 1.2, 1.2)
 
 	makeLuaSprite("overlay", "bgs/mindbg/overlay", -600, -200)
@@ -87,7 +88,7 @@ function onUpdatePost(elapsed)
         for (i in -1...2) {
             var bgBuild = game.getLuaObject("bgbuild" + i);
             var width = bgBuild.width + 1300;
-            bgBuild.x = getVar('bgBuildOffset') + FlxMath.lerp(0, -width, (Conductor.songPosition / 1000) % 1) + (i * width);
+            bgBuild.x = getVar('bgBuildOffset') + FlxMath.lerp(-width, 0, (Conductor.songPosition / 1000) % 1) + (i * width);
         }
 
 	]])
