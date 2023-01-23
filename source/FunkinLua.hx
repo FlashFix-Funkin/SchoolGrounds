@@ -75,7 +75,6 @@ class FunkinLua {
 	public static var hscript:HScript = null;
 	#end
 	
-	public function new(script:String) {
 		#if LUA_ALLOWED
 		lua = LuaL.newstate();
 		LuaL.openlibs(lua);
@@ -86,7 +85,6 @@ class FunkinLua {
 
 		//LuaL.dostring(lua, CLENSE);
 		try{
-			var result:Dynamic = LuaL.dofile(lua, script);
 			var resultStr:String = Lua.tostring(lua, result);
 			if(resultStr != null && result != 0) {
 				trace('Error on lua script! ' + resultStr);
@@ -207,6 +205,7 @@ class FunkinLua {
 		set('lowQuality', ClientPrefs.lowQuality);
 		set('shadersEnabled', ClientPrefs.shaders);
 		set('scriptName', scriptName);
+		set('letterboxxing', PlayState.instance.letterboxxing);
 		set('currentModDirectory', Paths.currentModDirectory);
 
 		#if windows
@@ -244,6 +243,26 @@ class FunkinLua {
 				PlayState.instance.closeSubState();
 				CustomSubstate.instance = null;
 				return true;
+			}
+			return false;
+		});
+
+		Lua_helper.add_callback(lua, "setLetterboxSize", function(distance:Float, tweenDuration:Float, ?ease:String = 'circOut') {
+			if (!PlayState.instance.letterboxxing) return false;
+			var distArray = [distance - FlxG.height, FlxG.height - distance];
+			for (i => side in ['top', 'bottom']) {
+				var tag = 'letterbox_${side}_tween';
+				var tweenObj:Dynamic = tweenShit(tag, 'letterboxSprite.members[$i]');
+				if (tweenObj != null) {
+					PlayState.instance.modchartTweens.set(tag, FlxTween.tween(tweenObj, {y: distArray[i]}, tweenDuration, {ease: getFlxEaseByString(ease),
+						onComplete: function(twn:FlxTween) {
+							PlayState.instance.callOnLuas('onTweenCompleted', [tag]);
+							PlayState.instance.modchartTweens.remove(tag);
+						}
+					}));
+				} else {
+					luaTrace("Couldn't complete Letterbox Tween", false, false, FlxColor.RED);
+				}
 			}
 			return false;
 		});

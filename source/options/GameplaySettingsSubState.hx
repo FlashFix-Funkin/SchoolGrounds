@@ -63,6 +63,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Letterboxxing',
+			'If checked, two black bars cover the top and bottom of the screen, making a cinematic effect',
+			'letterboxxing',
+			'bool',
+			false);
+		addOption(option);
+
 		var option:Option = new Option('Ghost Tapping',
 			"If checked, you won't get misses from pressing keys\nwhile there are no notes able to be hit.",
 			'ghostTapping',

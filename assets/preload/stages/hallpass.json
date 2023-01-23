@@ -7,5 +7,6 @@
 	"girlfriend": [400, 70],
 	"opponent": [-50, 70],
         
-         "hide_girlfriend": true
+	"hide_girlfriend": true,
+	"letterboxxing": true
 }

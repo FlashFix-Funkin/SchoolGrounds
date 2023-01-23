@@ -286,6 +286,14 @@ class PlayState extends MusicBeatState
 	public var opponentCameraOffset:Array<Float> = null;
 	public var girlfriendCameraOffset:Array<Float> = null;
 
+	/**
+	 * Loaded from the chart file. 
+	 * 
+	 * If the chart file reads `null` to the parameter, then it defaults to the `ClientPrefs` setting.
+	 */
+	public var letterboxxing:Bool = false;
+	public var letterboxSprite:FlxSpriteGroup = null;
+
 	#if desktop
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
@@ -463,7 +471,9 @@ class PlayState extends MusicBeatState
 				camera_boyfriend: [0, 0],
 				camera_opponent: [0, 0],
 				camera_girlfriend: [0, 0],
-				camera_speed: 1
+				camera_speed: 1,
+
+				letterboxxing: ClientPrefs.letterboxxing
 			};
 		}
 
@@ -490,6 +500,8 @@ class PlayState extends MusicBeatState
 		girlfriendCameraOffset = stageData.camera_girlfriend;
 		if(girlfriendCameraOffset == null)
 			girlfriendCameraOffset = [0, 0];
+
+		letterboxxing = stageData.letterboxxing == null ? ClientPrefs.letterboxxing : stageData.letterboxxing;
 
 		boyfriendGroup = new FlxSpriteGroup(BF_X, BF_Y);
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
@@ -1001,6 +1013,18 @@ class PlayState extends MusicBeatState
 		if (OpenFlAssets.exists(file)) {
 			dialogue = CoolUtil.coolTextFile(file);
 		}
+
+		if (letterboxxing) {
+			letterboxSprite = new FlxSpriteGroup();
+			var bar = new FlxSprite(-10, 100 - FlxG.height).makeGraphic(FlxG.width + 20, FlxG.height, 0xFF000000);
+			letterboxSprite.add(bar);
+			var bar = new FlxSprite(-10, FlxG.height - 100).makeGraphic(FlxG.width + 20, FlxG.height, 0xFF000000);
+			letterboxSprite.add(bar);
+
+			letterboxSprite.cameras = [camHUD];
+			add(letterboxSprite);
+		}
+
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
@@ -3838,7 +3862,6 @@ class PlayState extends MusicBeatState
 						}
 				}
 				reloadHealthBarColors();
-
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
 

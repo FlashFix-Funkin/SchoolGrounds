@@ -2,6 +2,16 @@
 	"song": {
 		"events": [
 			[
+				50161.2903225806,
+				[
+					[
+						"Set Letterbox Size",
+						"280",
+						"0.35"
+					]
+				]
+			],
+			[
 				50322.5806451613,
 				[
 					[
@@ -28,6 +38,11 @@
 						"Set Subtitle",
 						"",
 						""
+					],
+					[
+						"Set Letterbox Size",
+						"100",
+						"0.35"
 					]
 				]
 			],
@@ -48,8 +63,12 @@
 						"Set Subtitle",
 						"You've:alucard",
 						""
+					],
+					[
+						"Set Letterbox Size",
+						"280",
+						"0.35"
 					]
-					
 				]
 			],
 			[
@@ -189,6 +208,11 @@
 						"Set Subtitle",
 						"*CRACK*",
 						""
+					],
+					[
+						"Set Letterbox Size",
+						"-2000",
+						"0.35"
 					]
 				]
 			],
