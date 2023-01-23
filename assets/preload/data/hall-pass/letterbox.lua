@@ -1,10 +1,10 @@
 function createLetterboxing()
 
-	makeLuaSprite('bartop','',0,-1000)
+	makeLuaSprite('bartop','',0,-900)
     makeGraphic('bartop',1900,1000,'000000')
     addLuaSprite('bartop',true)
 
-    makeLuaSprite('barbot','',0,725)
+    makeLuaSprite('barbot','',0,625)
     makeGraphic('barbot',1900,1000,'000000')
     addLuaSprite('barbot',true)
 
@@ -17,14 +17,7 @@ function createLetterboxing()
 	setObjectOrder('barbot', getObjectOrder('barbot') - 12)
 
 end
-function onBeatHit()
-    if curBeat == 1 then
-        doTweenY('bartopY', 'bartop', -900, 0.35, 'circOut')
-        doTweenY('barbotY', 'barbot', 625, 0.35, 'circOut')
-    end
-end
 
 function onCreate()
     createLetterboxing()
 end
-
