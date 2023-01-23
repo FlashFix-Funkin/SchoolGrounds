@@ -3862,6 +3862,11 @@ class PlayState extends MusicBeatState
 						}
 				}
 				reloadHealthBarColors();
+			case 'Set Letterbox Size':
+				if (!letterboxxing) return;
+				var script = new FunkinLua('
+					setLetterboxSize($value1, $value2)
+				', false);
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
 
