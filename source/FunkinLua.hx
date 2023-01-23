@@ -75,6 +75,7 @@ class FunkinLua {
 	public static var hscript:HScript = null;
 	#end
 	
+	public function new(script:String, ?isFile:Bool = true) {
 		#if LUA_ALLOWED
 		lua = LuaL.newstate();
 		LuaL.openlibs(lua);
@@ -85,6 +86,7 @@ class FunkinLua {
 
 		//LuaL.dostring(lua, CLENSE);
 		try{
+			var result:Dynamic = isFile ? LuaL.dofile(lua, script) : LuaL.dostring(lua, 'function onCreate()\n$script\nend');
 			var resultStr:String = Lua.tostring(lua, result);
 			if(resultStr != null && result != 0) {
 				trace('Error on lua script! ' + resultStr);
