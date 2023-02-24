@@ -61,7 +61,7 @@ import DialogueBoxPsych;
 import Conductor.Rating;
 
 #if VIDEOS_ALLOWED
-import hxcodec.VideoSprite;
+import hxcodec.VideoHandler;
 #end
 
 #if !flash 
@@ -1632,7 +1632,7 @@ class PlayState extends MusicBeatState
 			startAndEnd();
 			return;
 		}
-		var videoSpr:VideoSprite = new VideoSprite();
+		var videoSpr:VideoHandler = new VideoHandler();
 		videoSpr.playVideo(filepath);
 		videoSpr.finishCallback = function() {
 			startAndEnd();
