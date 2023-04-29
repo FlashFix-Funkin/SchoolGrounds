@@ -28,18 +28,21 @@ class MainMenuState extends MusicBeatState
 	public static var psychEngineVersion:String = ''; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
-	var menuItems:FlxTypedGroup<FlxSprite>;
+	var menuItems:FlxTypedGroup<FlxText>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
+
+	var SGlogo:FlxText;
 	
 	var optionShit:Array<String> = [
-		'story_mode',
-		'freeplay',
-		#if !switch 'donate', #end
-		'options'
+		'PICO CAMPAIGN.',
+		'FREEPLAY.',
+		'OPTIONS.',
+		'COSTUMES.',
+		'COMICS.'
 	];
 	
-	var mods:FlxSprite;
+	var NGbutton:FlxSprite;
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
@@ -71,8 +74,8 @@ class MainMenuState extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
-		bg.scrollFactor.set(0, yScroll);
+		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('paperMainBG'));
+		bg.scrollFactor.set(0);
 		bg.setGraphicSize(Std.int(bg.width * 1.175));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -94,21 +97,15 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 		
-		mods = new FlxSprite(-80).loadGraphic('assets/images/modSprite.png');
-		var mds:Float = (optionShit.length - 4) * 0.135;
-		if(optionShit.length < 6) mds = 0;
-		mods.scrollFactor.set(0, mds);
-		mods.setGraphicSize(Std.int(mods.width * 1.175));
-		mods.updateHitbox();
-		mods.visible = true;
-		mods.antialiasing = ClientPrefs.globalAntialiasing;
-		mods.x = 1000;
-		mods.y = 450;
-		add(mods);
+
+		SGlogo = new FlxText(50, 50, 0, "[Schoolgrounds.]",12);
+		SGlogo.setFormat(Paths.font("Helvetica.ttf"), 80, FlxColor.WHITE);
+		SGlogo.scrollFactor.set(0);
+		add(SGlogo);
 		
 		// magenta.scrollFactor.set();
 
-		menuItems = new FlxTypedGroup<FlxSprite>();
+		menuItems = new FlxTypedGroup<FlxText>();
 		add(menuItems);
 
 		var scale:Float = 1.05;
@@ -118,16 +115,12 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 		{
-			var offset:Float = 70 - (Math.max(optionShit.length, 10) - 10) * 80;
-			var menuItem:FlxSprite = new FlxSprite(0, (i * 160)  + offset);
+			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
+			var menuItem:FlxText = new FlxText(50, (i * 100)  + offset + 150, 0, "" + optionShit[i], 12);
+			menuItem.setFormat(Paths.font("Helvetica.ttf"), 50, FlxColor.WHITE);
 			menuItem.scale.x = scale;
 			menuItem.scale.y = scale;
-			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
-			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
-			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
-			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
@@ -137,16 +130,21 @@ class MainMenuState extends MusicBeatState
 			menuItem.updateHitbox();
 		}
 
-		FlxG.camera.follow(camFollowPos, null, 1);
+		NGbutton = new FlxSprite(-50).loadGraphic('assets/images/newgrounds_logo.png');
+		var mds:Float = (optionShit.length - 4) * 0.135;
+		if(optionShit.length < 6) mds = 0;
+		NGbutton.scrollFactor.set(0, mds);
+		NGbutton.setGraphicSize(Std.int(NGbutton.width * 1.175));
+		NGbutton.updateHitbox();
+		NGbutton.visible = true;
+		NGbutton.scale.x = 0.6;
+		NGbutton.scale.y = 0.6;
+		NGbutton.antialiasing = ClientPrefs.globalAntialiasing;
+		NGbutton.x = 900;
+		NGbutton.y = 350;
+		add(NGbutton);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "" + psychEngineVersion, 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "v0.2.9 (Prototype Build)", 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
+		FlxG.camera.follow(camFollowPos, null, 1);
 
 		// NG.core.calls.event.logEvent('swag').send();
 
@@ -181,18 +179,9 @@ class MainMenuState extends MusicBeatState
 		
 	override function update(elapsed:Float)
 	{
-		if (FlxG.mouse.overlaps(mods))
-		{
-			FlxTween.tween(mods.scale, {x:1.1, y:1.1}, 0.1, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
-		}
-		else 
-		{
-			FlxTween.tween(mods.scale, {x:1, y:1}, 0.1, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
-		}
-		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(mods))
+		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(NGbutton))
 		{		
-			FlxG.sound.play(Paths.sound('cancelMenu'));
-			 MusicBeatState.switchState(new ModsMenuState()); 
+			CoolUtil.browserLoad('https://www.newgrounds.com/portal/view/310349');
 		}
 		
 		if (FlxG.sound.music.volume < 0.8)
@@ -217,31 +206,16 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
-			if (controls.BACK)
-			{
-				selectedSomethin = true;
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new TitleState());
-			}
-
 			if (controls.ACCEPT)
 			{
-				if (optionShit[curSelected] == 'donate')
-				{
-					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
-				}
-				else
 				{
 					selectedSomethin = true;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
-
-					if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
 						if (curSelected != spr.ID)
 						{
-							FlxTween.tween(mods, {alpha: 0}, 0.4, { ease: FlxEase.quadOut });
+							FlxTween.tween(NGbutton, {alpha: 0}, 0.4, { ease: FlxEase.quadOut });
 							FlxTween.tween(spr, {alpha: 0}, 0.4, {
 								ease: FlxEase.quadOut,
 								onComplete: function(twn:FlxTween)
@@ -252,15 +226,14 @@ class MainMenuState extends MusicBeatState
 						}
 						else
 						{
-							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
-							{
+							
 								var daChoice:String = optionShit[curSelected];
 
 								switch (daChoice)
 								{
-									case 'story_mode':
+									case 'PICO CAMPAIGN.':
 										MusicBeatState.switchState(new StoryMenuState());
-									case 'freeplay':
+									case 'FREEPLAY.':
 										MusicBeatState.switchState(new FreeplayState());
 									#if MODS_ALLOWED
 									case 'mods':
@@ -270,10 +243,14 @@ class MainMenuState extends MusicBeatState
 										MusicBeatState.switchState(new AchievementsMenuState());
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
-									case 'options':
+									case 'OPTIONS.':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
+									case 'COSTUMES.':
+										MusicBeatState.switchState(new FreeplayState());
+									case 'COMICS.':
+										MusicBeatState.switchState(new FreeplayState());
+
 								}
-							});
 						}
 					});
 				}
@@ -289,10 +266,6 @@ class MainMenuState extends MusicBeatState
 
 		super.update(elapsed);
 
-		menuItems.forEach(function(spr:FlxSprite)
-		{
-			spr.screenCenter(X);
-		});
 	}
 
 	function changeItem(huh:Int = 0)
@@ -304,20 +277,22 @@ class MainMenuState extends MusicBeatState
 		if (curSelected < 0)
 			curSelected = menuItems.length - 1;
 
-		menuItems.forEach(function(spr:FlxSprite)
+		menuItems.forEach(function(spr:FlxText)
 		{
-			spr.animation.play('idle');
 			spr.updateHitbox();
 
 			if (spr.ID == curSelected)
 			{
-				spr.animation.play('selected');
+				spr.setFormat(Paths.font("Helvetica.ttf"), 50, FlxColor.RED);
 				var add:Float = 0;
 				if(menuItems.length > 4) {
 					add = menuItems.length * 8;
 				}
 				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - add);
-				spr.centerOffsets();
+			}
+			else
+			{
+				spr.setFormat(Paths.font("Helvetica.ttf"), 50, FlxColor.WHITE);
 			}
 		});
 	}
