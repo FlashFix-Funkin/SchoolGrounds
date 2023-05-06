@@ -1,5 +1,6 @@
 package;
 
+import flixel.group.FlxSpriteGroup;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -25,12 +26,15 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
+	var paused:Bool = false;
+
 	public static var psychEngineVersion:String = ''; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
+	public var camGame:FlxCamera;
+	public var camNotif:FlxCamera;
+
 	var menuItems:FlxTypedGroup<FlxText>;
-	private var camGame:FlxCamera;
-	private var camAchievement:FlxCamera;
 
 	var SGlogo:FlxText;
 	
@@ -38,15 +42,17 @@ class MainMenuState extends MusicBeatState
 		'PICO CAMPAIGN.',
 		'FREEPLAY.',
 		'OPTIONS.',
-		'COSTUMES.',
+		'LOCKER ROOM.',
 		'COMICS.'
 	];
 	
 	var NGbutton:FlxSprite;
 	var magenta:FlxSprite;
-	var camFollow:FlxObject;
-	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
+
+	var loginButton:FlxText; var loginButtonCol:UInt = 0xFFFFBA13;
+
+	var profileInfo:FlxSpriteGroup;
 	
 
 	override function create()
@@ -61,12 +67,12 @@ class MainMenuState extends MusicBeatState
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
 		camGame = new FlxCamera();
-		camAchievement = new FlxCamera();
-		camAchievement.bgColor.alpha = 0;
+		camNotif = new FlxCamera();
+		camNotif.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(camAchievement);
-		FlxCamera.defaultCameras = [camGame];
+		FlxG.cameras.add(camNotif, false);
+		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
@@ -81,11 +87,6 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
-
-		camFollow = new FlxObject(0, 0, 1, 1);
-		camFollowPos = new FlxObject(0, 0, 1, 1);
-		add(camFollow);
-		add(camFollowPos);
 
 		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
 		magenta.scrollFactor.set(0, yScroll);
@@ -102,6 +103,15 @@ class MainMenuState extends MusicBeatState
 		SGlogo.setFormat(Paths.font("Helvetica.ttf"), 80, FlxColor.WHITE);
 		SGlogo.scrollFactor.set(0);
 		add(SGlogo);
+
+		loginButton = new FlxText(FlxG.width - 112, 12, 0, "Login?...",12);
+		loginButton.setFormat(Paths.font("Helvetica.ttf"), 30, loginButtonCol, LEFT);
+		loginButton.scrollFactor.set(0);
+		loginButton.visible = !NGio.active;
+		add(loginButton);
+
+		if (NGio.active)
+			updateProfileInfo();
 		
 		// magenta.scrollFactor.set();
 
@@ -144,38 +154,25 @@ class MainMenuState extends MusicBeatState
 		NGbutton.y = 350;
 		add(NGbutton);
 
-		FlxG.camera.follow(camFollowPos, null, 1);
-
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
 
-		#if ACHIEVEMENTS_ALLOWED
-		Achievements.loadAchievements();
-		var leDate = Date.now();
-		if (leDate.getDay() == 5 && leDate.getHours() >= 18) {
-			var achieveID:Int = Achievements.getAchievementIndex('friday_night_play');
-			if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2])) { //It's a friday night. WEEEEEEEEEEEEEEEEEE
-				Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
-				giveAchievement();
-				ClientPrefs.saveSettings();
-			}
-		}
-		#end
-
 		super.create();
 	}
-
-	#if ACHIEVEMENTS_ALLOWED
-	// Unlocks "Freaky on a Friday Night" achievement
-	function giveAchievement() {
-		add(new AchievementObject('friday_night_play', camAchievement));
-		FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-		trace('Giving achievement "friday_night_play"');
-	}
-	#end
 	
 	var selectedSomethin:Bool = false;
+
+	override function closeSubState() {
+		paused = false;
+		super.closeSubState();
+		FlxG.sound.play(Paths.sound('scrollMenu'));
+		if (NGio.active) {
+			updateProfileInfo();	
+			new Notification("Unlocked Rapman Song in Freeplay!", this);
+			new Notification("Unlocked Newgrounds exclusive Costumes!", this);
+		}
+	}
 		
 	override function update(elapsed:Float)
 	{
@@ -183,85 +180,95 @@ class MainMenuState extends MusicBeatState
 		{		
 			CoolUtil.browserLoad('https://www.newgrounds.com/portal/view/310349');
 		}
+		if (!NGio.active) loginButton.color = FlxG.mouse.overlaps(loginButton) ? FlxColor.WHITE : loginButtonCol;
+		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(loginButton) && !NGio.active) {
+			paused = true;
+			FlxG.sound.play(Paths.sound('scrollMenu'));
+			openSubState(new NewgroundsLoginSubstate());
+		}
 		
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
-		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
-
-		if (!selectedSomethin)
-		{
-			if (controls.UI_UP_P)
+		if (!paused) {
+			menuItems.forEach((spr:FlxSprite) -> {
+				if (FlxG.mouse.overlaps(spr)) {
+					curSelected = spr.ID; changeItem(0);
+				}
+			});
+	
+			if (!selectedSomethin)
 			{
-				FlxG.sound.play(Paths.sound('scrollMenu'));
-				changeItem(-1);
-			}
-
-			if (controls.UI_DOWN_P)
-			{
-				FlxG.sound.play(Paths.sound('scrollMenu'));
-				changeItem(1);
-			}
-
-			if (controls.ACCEPT)
-			{
+				if (controls.UI_UP_P)
+				{
+					FlxG.sound.play(Paths.sound('scrollMenu'));
+					changeItem(-1);
+				}
+	
+				if (controls.UI_DOWN_P)
+				{
+					FlxG.sound.play(Paths.sound('scrollMenu'));
+					changeItem(1);
+				}
+	
+				if (controls.ACCEPT || (FlxG.mouse.justPressed && FlxG.mouse.overlaps(menuItems.members[curSelected])))
+				{
+					{
+						selectedSomethin = true;
+	
+						menuItems.forEach(function(spr:FlxSprite)
+						{
+							if (curSelected != spr.ID) {
+								FlxTween.tween(NGbutton, {alpha: 0}, 0.4, { ease: FlxEase.quadOut });
+								FlxTween.tween(spr, {alpha: 0}, 0.4, {
+									ease: FlxEase.quadOut,
+									onComplete: function(twn:FlxTween)
+									{
+										spr.kill();
+									}
+								});
+							}
+							else
+							{
+								
+									var daChoice:String = optionShit[curSelected];
+	
+									switch (daChoice)
+									{
+										case 'PICO CAMPAIGN.':
+											MusicBeatState.switchState(new StoryMenuState());
+										case 'FREEPLAY.':
+											MusicBeatState.switchState(new FreeplayState());
+										#if MODS_ALLOWED
+										case 'mods':
+											MusicBeatState.switchState(new ModsMenuState());
+										#end
+										case 'awards':
+											MusicBeatState.switchState(new AchievementsMenuState());
+										case 'credits':
+											MusicBeatState.switchState(new CreditsState());
+										case 'OPTIONS.':
+											LoadingState.loadAndSwitchState(new options.OptionsState());
+										case 'COSTUMES.':
+											MusicBeatState.switchState(new FreeplayState());
+										case 'COMICS.':
+											MusicBeatState.switchState(new FreeplayState());
+	
+									}
+							}
+						});
+					}
+				}
+				#if desktop
+				else if (FlxG.keys.anyJustPressed(debugKeys))
 				{
 					selectedSomethin = true;
-
-					menuItems.forEach(function(spr:FlxSprite)
-					{
-						if (curSelected != spr.ID)
-						{
-							FlxTween.tween(NGbutton, {alpha: 0}, 0.4, { ease: FlxEase.quadOut });
-							FlxTween.tween(spr, {alpha: 0}, 0.4, {
-								ease: FlxEase.quadOut,
-								onComplete: function(twn:FlxTween)
-								{
-									spr.kill();
-								}
-							});
-						}
-						else
-						{
-							
-								var daChoice:String = optionShit[curSelected];
-
-								switch (daChoice)
-								{
-									case 'PICO CAMPAIGN.':
-										MusicBeatState.switchState(new StoryMenuState());
-									case 'FREEPLAY.':
-										MusicBeatState.switchState(new FreeplayState());
-									#if MODS_ALLOWED
-									case 'mods':
-										MusicBeatState.switchState(new ModsMenuState());
-									#end
-									case 'awards':
-										MusicBeatState.switchState(new AchievementsMenuState());
-									case 'credits':
-										MusicBeatState.switchState(new CreditsState());
-									case 'OPTIONS.':
-										LoadingState.loadAndSwitchState(new options.OptionsState());
-									case 'COSTUMES.':
-										MusicBeatState.switchState(new FreeplayState());
-									case 'COMICS.':
-										MusicBeatState.switchState(new FreeplayState());
-
-								}
-						}
-					});
+					MusicBeatState.switchState(new MasterEditorMenu());
 				}
-			}
-			#if desktop
-			else if (FlxG.keys.anyJustPressed(debugKeys))
-			{
-				selectedSomethin = true;
-				MusicBeatState.switchState(new MasterEditorMenu());
-			}
-			#end
+				#end
+			}	
 		}
 
 		super.update(elapsed);
@@ -280,20 +287,23 @@ class MainMenuState extends MusicBeatState
 		menuItems.forEach(function(spr:FlxText)
 		{
 			spr.updateHitbox();
-
-			if (spr.ID == curSelected)
-			{
-				spr.setFormat(Paths.font("Helvetica.ttf"), 50, FlxColor.RED);
-				var add:Float = 0;
-				if(menuItems.length > 4) {
-					add = menuItems.length * 8;
-				}
-				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - add);
-			}
-			else
-			{
-				spr.setFormat(Paths.font("Helvetica.ttf"), 50, FlxColor.WHITE);
-			}
+			spr.setFormat(Paths.font("Helvetica.ttf"), 50, spr.ID == curSelected ? FlxColor.RED : FlxColor.WHITE);
 		});
+	}
+
+	function updateProfileInfo() {
+		loginButton.visible = !NGio.active;
+
+		profileInfo = new FlxSpriteGroup(FlxG.width - 200, 12);
+		add(profileInfo);
+
+		var icon:FlxSprite = NGio.getUserIcon(120, 0);
+		profileInfo.add(icon);
+
+		var name:FlxText = new FlxText(0, 0, 0, NGio.username, 12);
+		name.setFormat(Paths.font("Helvetica.ttf"), 30, FlxColor.WHITE, RIGHT);
+		name.x = 120 - name.width - 12;
+		profileInfo.add(name);
+
 	}
 }

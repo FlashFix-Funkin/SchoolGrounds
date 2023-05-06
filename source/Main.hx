@@ -104,6 +104,9 @@ class Main extends Sprite
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
+
+		//NGio.newgroundsLogin(); // <-- doing this in the menu now cus otherwise things dont mesh quite right
+		FlxG.mouse.useSystemCursor = true;
 	}
 
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
