@@ -1,5 +1,6 @@
 package;
 
+import haxe.io.Bytes;
 import animateatlas.AtlasFrameMaker;
 import flixel.math.FlxPoint;
 import flixel.graphics.frames.FlxFrame.FlxFrameAngle;
@@ -155,6 +156,27 @@ class Paths
 	inline public static function getPreloadPath(file:String = '')
 	{
 		return 'assets/$file';
+	}
+	
+	static public function urlImage( url : String ) : FlxGraphic {
+		var returnGraphic:FlxGraphic = null;
+		trace(url);
+
+		if (!currentTrackedAssets.exists(url)) {
+			var http = new haxe.Http(url);
+			http.onBytes = (bytes:Bytes) -> {
+				var newBitmap:BitmapData = BitmapData.fromBytes(bytes);
+				var newGraphic = FlxGraphic.fromBitmapData(newBitmap, false, url);
+				newGraphic.persist = true;
+				currentTrackedAssets.set(url, newGraphic);
+			}
+			http.onError = (e) -> {
+				trace('Error loading Image | $e');
+			}
+			http.request();
+		}
+		localTrackedAssets.push(url);
+		return returnGraphic ??= currentTrackedAssets.get(url);
 	}
 
 	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)
