@@ -176,7 +176,7 @@ class Paths
 			http.request();
 		}
 		localTrackedAssets.push(url);
-		return returnGraphic ??= currentTrackedAssets.get(url);
+		return returnGraphic = currentTrackedAssets.get(url);
 	}
 
 	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)

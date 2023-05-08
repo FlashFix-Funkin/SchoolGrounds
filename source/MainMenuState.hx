@@ -37,6 +37,8 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxText>;
 
 	var SGlogo:FlxText;
+
+	var picoColorSwap:ColorSwap = null;
 	
 	var optionShit:Array<String> = [
 		'PICO CAMPAIGN.',
@@ -79,6 +81,18 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
+		picoColorSwap = new ColorSwap();
+
+		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
+		var picoYellowBG:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('YellowPicoBG'));
+		picoYellowBG.scrollFactor.set(0);
+		picoYellowBG.setGraphicSize(Std.int(picoYellowBG.width * 1.175));
+		picoYellowBG.updateHitbox();
+		picoYellowBG.screenCenter();
+		picoYellowBG.antialiasing = ClientPrefs.globalAntialiasing;
+		picoYellowBG.shader = picoColorSwap.shader;
+		add(picoYellowBG);
+
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('paperMainBG'));
 		bg.scrollFactor.set(0);
@@ -86,6 +100,7 @@ class MainMenuState extends MusicBeatState
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
+		bg.alpha = 0.5;
 		add(bg);
 
 		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
@@ -239,8 +254,14 @@ class MainMenuState extends MusicBeatState
 									{
 										case 'PICO CAMPAIGN.':
 											MusicBeatState.switchState(new StoryMenuState());
+											picoColorSwap.hue = 0.9;
+											picoColorSwap.brightness = 0.25;
+											picoColorSwap.saturation = 0.25;				
 										case 'FREEPLAY.':
 											MusicBeatState.switchState(new FreeplayState());
+											picoColorSwap.hue = 0.6;	
+											picoColorSwap.brightness = 0.25;
+											picoColorSwap.saturation = 0.25;	
 										#if MODS_ALLOWED
 										case 'mods':
 											MusicBeatState.switchState(new ModsMenuState());
@@ -251,6 +272,9 @@ class MainMenuState extends MusicBeatState
 											MusicBeatState.switchState(new CreditsState());
 										case 'OPTIONS.':
 											LoadingState.loadAndSwitchState(new options.OptionsState());
+											picoColorSwap.hue = 0.5;
+											picoColorSwap.brightness = 0.25;
+											picoColorSwap.saturation = 0.25;		
 										case 'COSTUMES.':
 											MusicBeatState.switchState(new FreeplayState());
 										case 'COMICS.':
