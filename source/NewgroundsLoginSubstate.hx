@@ -19,6 +19,12 @@ class NewgroundsLoginSubstate extends MusicBeatSubstate {
         heading.setFormat(Paths.font("Helvetica.ttf"), 55, 0xFFFFFFFF);
         heading.screenCenter(X);
         add(heading);
+        
+        var subtext:FlxText = new FlxText(0, heading.y + 100, FlxG.width / 2.2, "You will be redirected to the \"Newgrounds Passport\" website. This is a system that gives you the safety of logging into Newgrounds without fear we may be stealing ur data :D", 12);
+        subtext.setFormat(Paths.font("Helvetica.ttf"), 24, 0xFFFFFFFF);
+        subtext.screenCenter(X);
+        add(subtext);
+
         super.create();
     }
     override function update(elapsed:Float) {

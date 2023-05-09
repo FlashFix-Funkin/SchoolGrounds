@@ -30,6 +30,7 @@ class Notification extends FlxObject {
                             onComplete: (_:FlxTween) -> {
                                 state.remove(blackBar);
                                 blackBar.destroy();
+                                _notifCount--;
                             }
                         }
                     );

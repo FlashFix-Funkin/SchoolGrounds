@@ -10,18 +10,25 @@ import io.newgrounds.utils.MedalList.ExternalMedal;
 import io.newgrounds.NGLite.LoginOutcome;
 import io.newgrounds.NG;
 
+using DateTools;
+
 class NGio {
+    public static var sessionData:NewgroundsSessionData;
     public static var active:Bool = false;
-    public static var username:Null<String>;
-    public static var isSupporter:Bool = false;
 
     public static function newgroundsLogin( ?onComplete:( outcome : LoginOutcome ) -> Void ):Void {
-        NG.create();
+	    NG.create();
         NG.core.requestLogin((cb : LoginOutcome) -> {
             switch (cb) {
                 case SUCCESS:
-                    NGio.username = NG.core.user.name;
-                    NGio.isSupporter = NG.core.user.supporter;
+                    NGio.sessionData = {
+                        sessionDate: Date.now(),
+                        sessionID: NG.core.sessionId,
+                        userData: {
+                            name: NG.core.user.name,
+                            isSupporter: NG.core.user.supporter
+                        }
+                    };
                 default:
                     // ... thing fucking fucked
 
@@ -37,4 +44,10 @@ class NGio {
         var icon:FlxSprite = new FlxSprite(x, y).loadGraphic(Paths.urlImage(NG.core.user.icons.large));
         return icon;
     }
+}
+
+typedef NewgroundsSessionData = {
+    sessionDate : Date,
+    sessionID : String,
+    userData : { name : String, isSupporter : Bool }
 }
