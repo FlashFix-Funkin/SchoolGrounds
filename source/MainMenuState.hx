@@ -59,6 +59,9 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+		FlxG.sound.music.fadeIn(1, 0, 0.7);
+
 		FlxG.mouse.visible = true;
 		WeekData.loadTheFirstEnabledMod();
 
@@ -322,7 +325,7 @@ class MainMenuState extends MusicBeatState
 		var icon:FlxSprite = NGio.getUserIcon(120, 0);
 		profileInfo.add(icon);
 
-		var name:FlxText = new FlxText(0, 0, 0, NGio.sessionData.userData.name ?? "something went wrong...", 12);
+		var name:FlxText = new FlxText(0, 0, 0, NGio.sessionData.userData.name, 12);
 		name.setFormat(Paths.font("Helvetica.ttf"), 30, FlxColor.WHITE, RIGHT);
 		name.x = 120 - name.width - 12;
 		profileInfo.add(name);

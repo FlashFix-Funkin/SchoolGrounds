@@ -34,6 +34,9 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+#if VIDEOS_ALLOWED
+import hxcodec.VideoHandler;
+#end
 import openfl.Assets;
 
 using StringTools;
@@ -223,6 +226,33 @@ class TitleState extends MusicBeatState
 	var titleText:FlxSprite;
 	var swagShader:ColorSwap = null;
 
+	public function startVideo(name:String)
+	{
+		#if VIDEOS_ALLOWED
+		var filepath = Paths.video(name);
+		#if sys
+		if(!FileSystem.exists(filepath))
+		#else
+		if(!OpenFlAssets.exists(filepath))
+		#end
+		{
+			FlxG.log.warn('Couldnt find video file: ' + name);
+			MusicBeatState.switchState(new MainMenuState());
+			return;
+		}
+		var videoSpr:VideoHandler = new VideoHandler();
+		videoSpr.playVideo(filepath);
+		videoSpr.finishCallback = function() {
+			MusicBeatState.switchState(new MainMenuState());
+			return;
+		}
+		#else
+		FlxG.log.warn('Platform not supported!');
+		MusicBeatState.switchState(new MainMenuState());
+		return;
+		#end
+	}
+
 	function startIntro()
 	{
 		if (!initialized)
@@ -252,6 +282,7 @@ class TitleState extends MusicBeatState
 				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 			}
 		}
+
 
 		Conductor.changeBPM(titleJSON.bpm);
 		persistentUpdate = true;
@@ -622,10 +653,7 @@ class TitleState extends MusicBeatState
 			switch (sickBeats)
 			{
 				case 1:
-					//FlxG.sound.music.stop();
-					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-					FlxG.sound.music.fadeIn(4, 0, 0.7);
-					MusicBeatState.switchState(new MainMenuState());
+					startVideo('SGsplashScreen');
 			}
 		}
 	}
