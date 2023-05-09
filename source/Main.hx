@@ -1,5 +1,6 @@
 package;
 
+import io.newgrounds.NG;
 import flixel.graphics.FlxGraphic;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -105,7 +106,6 @@ class Main extends Sprite
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
-		//NGio.newgroundsLogin(); // <-- doing this in the menu now cus otherwise things dont mesh quite right
 		FlxG.mouse.useSystemCursor = true;
 	}
 
