@@ -83,9 +83,8 @@ class MainMenuState extends MusicBeatState
 
 		picoColorSwap = new ColorSwap();
 
-		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var picoYellowBG:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('YellowPicoBG'));
-		picoYellowBG.scrollFactor.set(0);
+		picoYellowBG.scrollFactor.set(-1);
 		picoYellowBG.setGraphicSize(Std.int(picoYellowBG.width * 1.175));
 		picoYellowBG.updateHitbox();
 		picoYellowBG.screenCenter();
@@ -93,9 +92,8 @@ class MainMenuState extends MusicBeatState
 		picoYellowBG.shader = picoColorSwap.shader;
 		add(picoYellowBG);
 
-		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('paperMainBG'));
-		bg.scrollFactor.set(0);
+		bg.scrollFactor.set(-1);
 		bg.setGraphicSize(Std.int(bg.width * 1.175));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -104,7 +102,7 @@ class MainMenuState extends MusicBeatState
 		add(bg);
 
 		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.scrollFactor.set(0, yScroll);
+		magenta.scrollFactor.set(-1);
 		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
 		magenta.updateHitbox();
 		magenta.screenCenter();

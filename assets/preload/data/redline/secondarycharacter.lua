@@ -1,4 +1,4 @@
--- script by ItsCapp don't steal, it's dumb
+--[[-- script by ItsCapp don't steal, it's dumb
 -- edited by Sentiack
 
 -- simply, offsets. they're the numbers in the top left of the character editor
@@ -152,4 +152,8 @@ function onCountdownTick(counter)
 			setProperty(name_of_character .. '.offset.y', idleoffsets[2]);
 		end
 	end
+end]]
+
+function onCreate()
+	addCharacterToList('roc2', 1095, 295)
 end

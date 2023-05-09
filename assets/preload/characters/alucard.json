@@ -5,62 +5,69 @@
 				0,
 				0
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle0"
+			"loop": false,
+			"name": "Idle0"
 		},
 		{
 			"offsets": [
-				-30,
-				-42
+				-3,
+				-22
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down0"
+			"loop": false,
+			"name": "Down0"
 		},
 		{
 			"offsets": [
-				-20,
-				56
+				48,
+				26
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up0"
+			"loop": false,
+			"name": "Up0"
 		},
 		{
 			"offsets": [
-				35,
-				-6
+				54,
+				-1
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left0"
+			"loop": false,
+			"name": "Left0"
 		},
 		{
 			"offsets": [
-				-91,
-				-5
+				-11,
+				-1
 			],
-			"loop": false,
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
 			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right0"
+			"loop": false,
+			"name": "Right0"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Alucard_Assets",
+	"image": "characters/alucard_new",
 	"position": [
-		-90,
-		230
+		-50,
+		150
 	],
 	"healthicon": "alucard",
 	"flip_x": false,
@@ -70,8 +77,8 @@
 		0
 	],
 	"camera_position": [
-		0,
-		60
+		40,
+		20
 	],
 	"sing_duration": 4.1,
 	"scale": 1
