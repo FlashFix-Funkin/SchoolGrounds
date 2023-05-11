@@ -179,6 +179,7 @@ class PlayState extends MusicBeatState
 
 	public var gfSpeed:Int = 1;
 	public var health:Float = 1;
+	public var displayHealth:Float = 1;
 	public var combo:Int = 0;
 
 	private var healthBarBG:AttachedSprite;
@@ -1195,7 +1196,7 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
-			'health', 0, 2);
+			'displayHealth', 0, 2);
 		healthBar.scrollFactor.set();
 		// healthBar
 		healthBar.visible = !ClientPrefs.hideHud;
@@ -1263,17 +1264,18 @@ class PlayState extends MusicBeatState
 
 		// SONG SPECIFIC SCRIPTS
 		#if LUA_ALLOWED
-		var erect:Bool = storyDifficulty == 2;
+		var erect:Bool = storyDifficulty == 1;
 		var filesPushed:Array<String> = [];
-		var foldersToCheck:Array<String> = [Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + (erect ? '/erect/' : '/'))];
+		var foldersToCheck:Array<String> = [Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song.replace('-erect', '')) + (erect ? '/erect/' : '/'))];
+		trace(foldersToCheck);
 
 		#if MODS_ALLOWED
-		foldersToCheck.insert(0, Paths.mods('data/' + Paths.formatToSongPath(SONG.song) + '/'));
+		foldersToCheck.insert(0, Paths.mods('data/' + Paths.formatToSongPath(SONG.song.replace('-erect', '')) + '/'));
 		if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
-			foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/data/' + Paths.formatToSongPath(SONG.song) + (erect ? '/erect/' : '/')));
+			foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/data/' + Paths.formatToSongPath(SONG.song.replace('-erect', '')) + (erect ? '/erect/' : '/')));
 
 		for(mod in Paths.getGlobalMods())
-			foldersToCheck.insert(0, Paths.mods(mod + '/data/' + Paths.formatToSongPath(SONG.song) + (erect ? '/erect/' : '/') ));// using push instead of insert because these should run after everything else
+			foldersToCheck.insert(0, Paths.mods(mod + '/data/' + Paths.formatToSongPath(SONG.song.replace('-erect', '')) + (erect ? '/erect/' : '/') ));
 		#end
 
 		for (folder in foldersToCheck)
@@ -3192,8 +3194,8 @@ class PlayState extends MusicBeatState
 		iconP1.y = healthBar.y + (150 * iconP1.scale.x - 150) / 2 - iconOffset - 50;
 		iconP2.y = healthBar.y + (150 * iconP1.scale.x - 150) / 2 - iconOffset - 50;
 
-		if (health > 2)
-			health = 2;
+		displayHealth = FlxMath.lerp(displayHealth, health, CoolUtil.boundTo(elapsed * 11.6, 0, 1));
+		health = CoolUtil.boundTo(health, 0, 2);
 
 		if (healthBar.percent < 20)
 			iconP1.animation.curAnim.curFrame = 1;
@@ -4069,7 +4071,7 @@ class PlayState extends MusicBeatState
 				#if !switch
 				var percent:Float = ratingPercent;
 				if(Math.isNaN(percent)) percent = 0;
-				Highscore.saveScore(SONG.song, songScore, storyDifficulty, percent);
+				Highscore.saveScore(SONG.song.replace('-erect', ''), songScore, storyDifficulty, percent);
 				#end
 			}
 
@@ -4617,6 +4619,7 @@ class PlayState extends MusicBeatState
 				note.destroy();
 			}
 		});
+		// if (combo > 0) // pop up score to show combo break
 		combo = 0;
 		health -= daNote.missHealth * healthLoss;
 		
