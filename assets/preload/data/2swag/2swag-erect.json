@@ -1,7 +1,7 @@
 {
 	"song": {
 		"player1": "p-player",
-		"player2": "daniel",
+		"player2": "daniel-opp",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -4169,11 +4169,22 @@
 				"mustHitSection": true
 			}
 		],
-		"gfVersion": "gf",
-		"events": [],
+		"gfVersion": "nenita",
+		"events": [
+			[
+				2461.53846153846,
+				[
+					[
+						"Play Animation",
+						"hey",
+						"Dad"
+					]
+				]
+			]
+		],
 		"player3": null,
 		"song": "2SWAG-erect",
-		"stage": "stage",
+		"stage": "2swag",
 		"needsVoices": true,
 		"validScore": true,
 		"bpm": 200,

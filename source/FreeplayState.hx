@@ -281,10 +281,13 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		if (controls.UI_LEFT_P)
-			changeDiff(-1);
-		else if (controls.UI_RIGHT_P)
-			changeDiff(1);
+		if (songs[curSelected].songName.toLowerCase() == '2swag') {
+			if (controls.UI_LEFT_P)
+				changeDiff(-1);
+			else if (controls.UI_RIGHT_P)
+				changeDiff(1);
+			else if (upP || downP) changeDiff();
+		}
 		else if (upP || downP) changeDiff();
 
 		if (controls.BACK)
@@ -397,7 +400,8 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		PlayState.storyDifficulty = curDifficulty;
-		diffText.text = '< ' + CoolUtil.difficultyString() + ' >';
+		var txt = (curDifficulty > 0 ? '< ' : '') + CoolUtil.difficultyString() + (curDifficulty < CoolUtil.difficulties.length - 1 ? ' >' : '');
+		diffText.text = songs[curSelected].songName.toLowerCase() != '2swag' ? CoolUtil.difficultyString() : txt;
 		positionHighscore();
 	}
 

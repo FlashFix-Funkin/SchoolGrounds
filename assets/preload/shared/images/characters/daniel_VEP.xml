@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="daniel.png">
+<SubTexture name="daniel idle0000" x="1065" y="1440" width="512" height="650" frameX="-293" frameY="-321" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0001" x="1065" y="1440" width="512" height="650" frameX="-293" frameY="-321" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0002" x="1577" y="1440" width="514" height="650" frameX="-291" frameY="-321" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0003" x="1577" y="1440" width="514" height="650" frameX="-291" frameY="-321" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0004" x="1859" y="0" width="510" height="662" frameX="-287" frameY="-309" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0005" x="1859" y="0" width="510" height="662" frameX="-287" frameY="-309" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0006" x="580" y="769" width="500" height="668" frameX="-291" frameY="-302" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0007" x="580" y="769" width="500" height="668" frameX="-291" frameY="-302" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0008" x="1349" y="0" width="510" height="672" frameX="-291" frameY="-298" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0009" x="1349" y="0" width="510" height="672" frameX="-291" frameY="-298" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0010" x="836" y="0" width="513" height="674" frameX="-291" frameY="-296" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel idle0011" x="836" y="0" width="513" height="674" frameX="-291" frameY="-296" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel left0000" x="533" y="1440" width="532" height="651" frameX="-235" frameY="-319" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel left0001" x="533" y="1440" width="532" height="651" frameX="-235" frameY="-319" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel left0002" x="0" y="1440" width="533" height="657" frameX="-235" frameY="-313" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel left0003" x="0" y="1440" width="533" height="657" frameX="-235" frameY="-313" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel down0000" x="0" y="2097" width="570" height="612" frameX="-236" frameY="-359" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel down0001" x="0" y="2097" width="570" height="612" frameX="-236" frameY="-359" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel down0002" x="2369" y="0" width="564" height="626" frameX="-222" frameY="-344" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel down0003" x="2369" y="0" width="564" height="626" frameX="-222" frameY="-344" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel up0000" x="0" y="0" width="412" height="769" frameX="-315" frameY="-203" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel up0001" x="0" y="0" width="412" height="769" frameX="-315" frameY="-203" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel up0002" x="412" y="0" width="424" height="755" frameX="-310" frameY="-217" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel up0003" x="412" y="0" width="424" height="755" frameX="-310" frameY="-217" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel right0000" x="0" y="769" width="580" height="671" frameX="-271" frameY="-299" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel right0001" x="0" y="769" width="580" height="671" frameX="-271" frameY="-299" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel right0002" x="1080" y="769" width="560" height="666" frameX="-280" frameY="-304" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="daniel right0003" x="1080" y="769" width="560" height="666" frameX="-280" frameY="-304" frameWidth="1000" frameHeight="1000" />
+</TextureAtlas>

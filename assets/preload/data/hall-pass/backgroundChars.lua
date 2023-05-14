@@ -39,7 +39,6 @@ function Create(array)
 	if #pseudo <= 0 then return "null" end
 
 	local rand = math.random(1,#pseudo)
-	debugPrint(curCharacters_OnScreen)
 
 	for i,v in pairs(curCharacters_OnScreen) do
 		if v == pseudo[rand] or pseudo[rand] == prev_CharacterAdded then

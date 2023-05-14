@@ -1,7 +1,7 @@
 {
 	"song": {
 		"player1": "p-player",
-		"player2": "daniel",
+		"player2": "daniel-opp",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -3184,7 +3184,7 @@
 		],
 		"player3": null,
 		"song": "2SWAG",
-		"stage": "stage",
+		"stage": "2swag",
 		"needsVoices": true,
 		"validScore": true,
 		"bpm": 195,

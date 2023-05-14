@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "IDLE0"
+		},
+		{
+			"offsets": [
+				81,
+				-2
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "LEFT"
+		},
+		{
+			"offsets": [
+				125,
+				-64
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "DOWN"
+		},
+		{
+			"offsets": [
+				0,
+				28
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "UP"
+		},
+		{
+			"offsets": [
+				-8,
+				-15
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "RIGHT0"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/pica",
+	"position": [
+		200,
+		280
+	],
+	"healthicon": "pico",
+	"flip_x": true,
+	"healthbar_colors": [
+		135,
+		0,
+		61
+	],
+	"camera_position": [
+		160,
+		20
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}
