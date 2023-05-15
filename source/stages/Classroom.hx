@@ -12,6 +12,7 @@ class Classroom extends Stage {
     var overlay:Null<BGSprite>;
 
     public override function new(stageFile:StageFile) {
+        Paths.setCurrentLevel('shared');
         super(stageFile);
     }
     override function create() {

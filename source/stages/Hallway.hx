@@ -16,6 +16,7 @@ class Hallway extends Stage {
     var bgScroll:Array<BGSprite> = [];
 
     public override function new(stageFile:StageFile) {
+        Paths.setCurrentLevel('shared');
         super(stageFile);
     }
 

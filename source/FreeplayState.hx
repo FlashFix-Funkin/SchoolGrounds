@@ -288,7 +288,7 @@ class FreeplayState extends MusicBeatState
 				changeDiff(1);
 			else if (upP || downP) changeDiff();
 		}
-		else if (upP || downP) changeDiff();
+		else if (upP || downP) {curDifficulty = 0; changeDiff();}
 
 		if (controls.BACK)
 		{

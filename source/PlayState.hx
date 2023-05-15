@@ -442,7 +442,7 @@ class PlayState extends MusicBeatState
 			case 'redline': curStage = 'station';
 			case 'bathroom-break': curStage = 'warehouse';
 			case 'hall-pass': curStage = 'hallway';
-			case '2swag': curStage = 'cafeteria';
+			case '2swag' | '2swag-erect': curStage = 'cafeteria';
 		}
 
 		var stageData:StageFile = StageData.getStageFile(curStage)
