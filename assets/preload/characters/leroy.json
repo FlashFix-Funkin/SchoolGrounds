@@ -1,103 +1,103 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				104,
 				7
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				68,
 				-4
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				88,
 				-57
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				52,
 				28
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				46,
 				-57
 			],
-			"anim": "singDOWN-alt",
+			"loop": false,
 			"fps": 24,
-			"name": "beatdown",
-			"indices": []
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "beatdown"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-4,
 				27
 			],
-			"anim": "singUP-alt",
+			"loop": false,
 			"fps": 24,
-			"name": "beatup",
-			"indices": []
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "beatup"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				50,
 				7
 			],
-			"anim": "singLEFT-alt",
+			"loop": false,
 			"fps": 24,
-			"name": "beatleft",
-			"indices": []
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "beatleft"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-5,
 				-5
 			],
-			"anim": "singRIGHT-alt",
+			"loop": false,
 			"fps": 24,
-			"name": "beatright",
-			"indices": []
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "beatright"
 		}
 	],
 	"no_antialiasing": false,
@@ -106,7 +106,7 @@
 		-340,
 		100
 	],
-	"healthicon": "icon-leroy",
+	"healthicon": "leroy",
 	"flip_x": false,
 	"healthbar_colors": [
 		255,
@@ -114,7 +114,7 @@
 		0
 	],
 	"camera_position": [
-		-320,
+		-480,
 		30
 	],
 	"sing_duration": 6.1,
