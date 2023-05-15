@@ -1,5 +1,6 @@
 package;
 
+import lime.app.Application;
 #if desktop
 import sys.thread.Thread;
 #end
@@ -124,6 +125,7 @@ class TitleState extends MusicBeatState
 		PlayerSettings.init();
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
+		Application.current.window.title = '[Schoolgrounds.] - ${curWacky[0].trim()}, ${curWacky[1].trim()}.';
 
 		// DEBUG BULLSHIT
 

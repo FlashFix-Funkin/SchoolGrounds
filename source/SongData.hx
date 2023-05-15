@@ -30,7 +30,7 @@ class SongData {
             songName : "Rapman",
             artist : "Requiem"
         },
-        'hallpass' => {
+        'hall-pass' => {
             songName : "Hall Pass",
             artist : "BBpanzu"
         },
