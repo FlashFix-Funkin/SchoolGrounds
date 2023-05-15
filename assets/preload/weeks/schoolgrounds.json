@@ -13,6 +13,15 @@
 	"hideStoryMode": false,
 	"songs": [
 		[
+			"Tutorial",
+			"pico",
+			[
+				75,
+				60,
+				115
+			]
+		],
+		[
 			"Mindfuck",
 			"alucard",
 			[
@@ -50,7 +59,7 @@
 		],
 		[
 			"2swag",
-			"face",
+			"daniel",
 			[
 				146,
 				113,
@@ -60,6 +69,15 @@
 		[
 			"Bathroom Break",
 			"hanzou",
+			[
+				86,
+				113,
+				253
+			]
+		],
+		[
+			"Whippy",
+			"whippy",
 			[
 				86,
 				113,

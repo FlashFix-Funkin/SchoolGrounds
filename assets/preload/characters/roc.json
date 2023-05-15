@@ -14,7 +14,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				35,
+				24,
 				7
 			],
 			"anim": "singLEFT",
@@ -25,44 +25,44 @@
 		{
 			"loop": false,
 			"offsets": [
-				25,
-				-67
-			],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-5,
-				29
-			],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-25,
-				5
+				-2,
+				-4
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "right",
 			"indices": []
+		},
+		{
+			"offsets": [
+				8,
+				-27
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				-8,
+				28
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/roc2",
+	"image": "characters/roc",
 	"position": [
-		-60,
+		-340,
 		100
 	],
-	"healthicon": "icon-roc",
+	"healthicon": "roc",
 	"flip_x": false,
 	"healthbar_colors": [
 		255,
@@ -70,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		-170,
-		-120
+		-480,
+		30
 	],
 	"sing_duration": 6.1,
 	"scale": 1

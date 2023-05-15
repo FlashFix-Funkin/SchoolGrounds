@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "otis idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "otis left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "otis down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "otis up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "otis right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/otis",
+	"position": [
+		20,
+		160
+	],
+	"healthicon": "whippy",
+	"flip_x": false,
+	"healthbar_colors": [
+		70,
+		83,
+		255
+	],
+	"camera_position": [
+		20,
+		70
+	],
+	"sing_duration": 4.00000000000001,
+	"scale": 1
+}
