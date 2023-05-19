@@ -59,8 +59,10 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-		FlxG.sound.music.fadeIn(1, 0, 0.7);
+		if (FlxG.sound.music == null) {
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.music.fadeIn(1, 0, 0.7);
+		}
 
 		FlxG.mouse.visible = true;
 		WeekData.loadTheFirstEnabledMod();
@@ -272,6 +274,9 @@ class MainMenuState extends MusicBeatState
 										case 'credits':
 											MusicBeatState.switchState(new CreditsState());
 										case 'OPTIONS.':
+											FlxG.sound.music.fadeOut(0.3, 0, (twn:FlxTween) -> {
+												FlxG.sound.music.kill();
+											});
 											LoadingState.loadAndSwitchState(new options.OptionsState());
 											picoColorSwap.hue = 0.5;
 											picoColorSwap.brightness = 0.25;

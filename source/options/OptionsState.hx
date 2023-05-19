@@ -55,6 +55,8 @@ class OptionsState extends MusicBeatState
 	var selectorRight:Alphabet;
 
 	override function create() {
+		FlxG.sound.playMusic(Paths.music('thrash'), 0);
+		FlxG.sound.music.fadeIn(1, 0, 0.7);
 		#if desktop
 		DiscordClient.changePresence("Options Menu", null);
 		#end
@@ -106,6 +108,11 @@ class OptionsState extends MusicBeatState
 
 		if (controls.BACK) {
 			FlxG.sound.play(Paths.sound('cancelMenu'));
+			FlxG.sound.music.fadeOut(0.3, 0, (twn:FlxTween) -> {
+				FlxG.sound.music.kill();
+				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+				FlxG.sound.music.fadeIn(1, 0, 0.7);
+			});
 			MusicBeatState.switchState(new MainMenuState());
 		}
 
