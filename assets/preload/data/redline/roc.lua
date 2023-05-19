@@ -6,7 +6,7 @@ How to Install Script:
 ]]
 --Base character stuff
 local path = "characters/roc" --Add path to spritesheet and xml, good: characters/name, bad: mods/images/characters
-local defaultPosition = {1700, 250}
+local defaultPosition = {1550, 550}
 --local defx = 0 --X position of the character
 --local defy = 0 --Y position of the character
 local singDuration = 0.4 --Insert how long you want the character to sing. Default: 0.4 (seconds)
@@ -53,8 +53,10 @@ function onCreate()
     makeCharacter()
 end
 
-function onStartCountdown()
-    playAnim('roc', 'idle', true)
+function onCountdownTick(tick)
+    if tick % 2 == 0 then
+        playAnim('roc', 'idle', true) 
+    end
 end
 
 
@@ -227,7 +229,7 @@ function opponentNoteHit(id, direction, noteType, isSustainNote)
     --Used when the opponent hits a note, duh
     -- left = 0, down = 1, up = 2, right = 3
     if noteType == noteTypeName then
-        playAnim(opponentName, direction)
+        playAnim(opponentName, direction, not isSustainNote)
         runTimer('idle'.. opponentName .. direction, singDuration)
     end
 end

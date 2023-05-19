@@ -1,5 +1,6 @@
 package stages;
 
+import flixel.math.FlxMath;
 import flixel.FlxG;
 import flixel.system.FlxSound;
 import openfl.display.BlendMode;
@@ -7,6 +8,8 @@ import flixel.tweens.FlxTween;
 import flixel.FlxBasic;
 import flixel.FlxSprite;
 import StageData.StageFile;
+
+using Lambda;
 
 class Station extends Stage {
     var directory:String = 'bgs/redline';
@@ -28,6 +31,8 @@ class Station extends Stage {
     var lightRight:BGSprite;
     var gradient:BGSprite;
 
+    var fgAlpha:Float = 1;
+
     final globalScale:Float = 0.87;
     final POS_X:Float = -550;
     final POS_Y:Float = -310;
@@ -36,10 +41,11 @@ class Station extends Stage {
         Paths.setCurrentLevel('shared');
         super(stageFile);
     }
+    var alphaTracked:Array<BGSprite>;
     override function create() {
         backColorSpr = new FlxSprite(POS_X, POS_Y).makeGraphic(2800, 1575, 0xFF1e2025);
 
-        train = new BGSprite('$directory/train_back', -4000, 400);
+        train = new BGSprite('$directory/train_long', -4000, 400);
         train.scale.set(globalScale, globalScale);
         train.updateHitbox();
         
@@ -118,15 +124,26 @@ class Station extends Stage {
         add(signRight1);
         add(signRight2);
         add(lightsUpper);
-        trace('tesing 1 2 3');
         foregroundSprites = [lightMiddle, lightLeft, lightRight, nebulaZorua, fgBars, gradient];
+        alphaTracked = [nebulaZorua, fgBars];
 
         super.create();
+    }
+    override function update(elapsed:Float) {
+        alphaTracked.iter((spr:BGSprite) -> {
+            spr.alpha = FlxMath.lerp(spr.alpha, fgAlpha, CoolUtil.boundTo(elapsed * 10.6, 0, 1));
+        });
+        super.update(elapsed);
+    }
+
+    override function sectionHit(curSection:Int, mustHitSection:Bool) {
+        fgAlpha = mustHitSection ? 1 : 0.25;
+        super.sectionHit(curSection, mustHitSection);
     }
 
     override function beatHit(curBeat:Int) {
         if (curBeat == 118) {
-            FlxG.sound.play(Paths.sound('trainSound', 'shared'));
+            FlxG.sound.play(Paths.sound('trainSound', 'shared', 1));
         }
         else if (curBeat == 132)
             FlxTween.tween(train, {x: 3000}, 0.25, {
