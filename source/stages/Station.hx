@@ -32,6 +32,7 @@ class Station extends Stage {
     var gradient:BGSprite;
 
     var fgAlpha:Float = 1;
+    var jose:BGSprite; // haxe wouldn't let me use josé :(((((((
 
     final globalScale:Float = 0.87;
     final POS_X:Float = -550;
@@ -65,11 +66,11 @@ class Station extends Stage {
         pillars.scale.set(globalScale, globalScale);
         pillars.updateHitbox();
         
-        fgBars = new BGSprite('$directory/redLine', POS_X, POS_Y);
+        fgBars = new BGSprite('$directory/redLine', POS_X, POS_Y + 235); //moved down for visibility
         fgBars.scale.set(globalScale, globalScale);
         fgBars.updateHitbox();
         
-        nebulaZorua = new BGSprite('$directory/trashCan', POS_X, POS_Y);
+        nebulaZorua = new BGSprite('$directory/trashCan', POS_X + 45, POS_Y + 200);
         nebulaZorua.scale.set(globalScale, globalScale);
         nebulaZorua.updateHitbox();
         
@@ -114,12 +115,16 @@ class Station extends Stage {
         //gradient.blend = BlendMode.DARKEN;
         gradient.alpha = 0.5;
 
+        // JOSÉ
+        jose = new BGSprite('characters/jose', 1080, 390, 1, 1, ['idle'], false);
+
         add(backColorSpr);
         add(backBars);
         add(groundBack);
         add(train);
         add(groundFront);
         add(pillars);
+        add(jose);
         add(signLeft);
         add(signRight1);
         add(signRight2);
@@ -128,6 +133,9 @@ class Station extends Stage {
         alphaTracked = [nebulaZorua, fgBars];
 
         super.create();
+
+        remove(gfGroup); // moving roc to be the gf sprite :D
+        insert(members.indexOf(boyfriendGroup), gfGroup);
     }
     override function update(elapsed:Float) {
         alphaTracked.iter((spr:BGSprite) -> {
@@ -143,7 +151,7 @@ class Station extends Stage {
 
     override function beatHit(curBeat:Int) {
         if (curBeat == 118) {
-            FlxG.sound.play(Paths.sound('trainSound', 'shared', 1));
+            FlxG.sound.play(Paths.sound('trainSound', 'shared'));
         }
         else if (curBeat == 132)
             FlxTween.tween(train, {x: 3000}, 0.25, {
@@ -152,6 +160,8 @@ class Station extends Stage {
                     train.kill();
                 }
             });
+
+        if (curBeat % 2 == 0) jose.animation.play('idle');
         super.beatHit(curBeat);
     }
 }
