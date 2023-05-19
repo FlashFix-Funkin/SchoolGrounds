@@ -1,0 +1,77 @@
+{
+	"songs": [
+		[
+			"Hall Pass",
+			"cyclops",
+			[
+				186,
+				120,
+				175
+			]
+		],
+		[
+			"Brainstorm",
+			"alucard",
+			[
+				66,
+				60,
+				95
+			]
+		],
+		[
+			"Whippy",
+			"whippy",
+			[
+				46,
+				73,
+				175
+			]
+		],
+		[
+			"2swag",
+			"daniel",
+			[
+				206,
+				213,
+				173
+			]
+		],
+		[
+			"Yuh",
+			"ace",
+			[
+				46,
+				20,
+				33
+			]
+		],
+		[
+			"Rapman",
+			"rapman",
+			[
+				246,
+				213,
+				153
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "",
+	"difficulties": "Hard, Erect",
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"storyName": "",
+	"weekName": "Freeplay",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "alucard",
+	"startUnlocked": true
+}

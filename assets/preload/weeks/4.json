@@ -1,0 +1,32 @@
+{
+	"songs": [
+		[
+			"Redline",
+			"leroy",
+			[
+				95,
+				73,
+				113
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "",
+	"difficulties": "Hard",
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"storyName": "GHETTO-BOTS",
+	"weekName": "Ghetto",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "hanzou",
+	"startUnlocked": true
+}

@@ -45,6 +45,7 @@ class FreeplayState extends MusicBeatState
 	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
+	var songFoldersList:Array<String> = [];
 
 	var bg:FlxSprite;
 	var intendedColor:Int;
@@ -59,9 +60,12 @@ class FreeplayState extends MusicBeatState
 		PlayState.isStoryMode = false;
 		WeekData.reloadWeekFiles(false);
 
+		
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
+
+		songFoldersList = sys.FileSystem.readDirectory('assets/songs');
 		#end
 
 		for (i in 0...WeekData.weeksList.length) {
@@ -129,7 +133,11 @@ class FreeplayState extends MusicBeatState
 			}
 
 			Paths.currentModDirectory = songs[i].folder;
+			#if desktop
+			var icon:HealthIcon = new HealthIcon(songFoldersList.contains(Paths.formatToSongPath(songs[i].songName)) ? songs[i].songCharacter : 'warning');
+			#else
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
+			#end
 			icon.sprTracker = songText;
 
 			// using a FlxGroup is too much fuss!

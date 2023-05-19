@@ -1,0 +1,32 @@
+{
+	"songs": [
+		[
+			"Mindfuck",
+			"alucard",
+			[
+				66,
+				60,
+				95
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "",
+	"difficulties": "",
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"storyName": "ALUCARD",
+	"weekName": "Alucard",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "alucard",
+	"startUnlocked": true
+}

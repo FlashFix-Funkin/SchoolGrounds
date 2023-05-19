@@ -2701,7 +2701,7 @@ class PlayState extends MusicBeatState
 		iconP1.y = healthBar.y + (150 * iconP1.scale.x - 150) / 2 - iconOffset - 50;
 		iconP2.y = healthBar.y + (150 * iconP1.scale.x - 150) / 2 - iconOffset - 50;
 
-		displayHealth = FlxMath.lerp(displayHealth, health, CoolUtil.boundTo(elapsed * 11.6, 0, 1));
+		displayHealth = FlxMath.lerp(displayHealth, health, CoolUtil.boundTo(elapsed * 9.6, 0, 1));
 		health = CoolUtil.boundTo(health, 0, 2);
 
 		if (healthBar.percent < 20)

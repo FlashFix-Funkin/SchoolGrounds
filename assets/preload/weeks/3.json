@@ -1,0 +1,32 @@
+{
+	"songs": [
+		[
+			"Bathroom Break",
+			"hanzou",
+			[
+				95,
+				93,
+				153
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "",
+	"difficulties": "Hard",
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"storyName": "HANZOU",
+	"weekName": "hanzou",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "cyclops",
+	"startUnlocked": true
+}

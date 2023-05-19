@@ -1,0 +1,32 @@
+{
+	"songs": [
+		[
+			"Tutorial",
+			"darnell",
+			[
+				166,
+				140,
+				215
+			]
+		]
+	],
+	"hiddenUntilUnlocked": true,
+	"hideFreeplay": false,
+	"weekBackground": "",
+	"difficulties": "Hard",
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"storyName": "Tutorial",
+	"weekName": "Tutorial",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "",
+	"startUnlocked": false
+}
