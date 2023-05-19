@@ -1,11 +1,13 @@
 package stages;
 
+import FunkinLua.ModchartSprite;
+import flixel.group.FlxSpriteGroup;
 import flixel.FlxBasic;
 import StageData.StageFile;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
+using Lambda;
 class Stage extends FlxTypedGroup<FlxBasic> {
-
     public final DEFAULT_CAM_ZOOM:Float;
     public final IS_PIXEL_STAGE:Bool;
 
@@ -23,6 +25,24 @@ class Stage extends FlxTypedGroup<FlxBasic> {
     public final LETTERBOXXING:Bool;
 
     public var foregroundSprites:Array<BGSprite> = [];
+    public var infrontOfGirlfriendSprites:Array<BGSprite> = [];
+
+    private var boyfriendGroup(get, never):FlxSpriteGroup;
+    private var dadGroup(get, never):FlxSpriteGroup;
+    private var gfGroup(get, never):FlxSpriteGroup;
+
+    
+    private var _dummy:FlxBasic;
+
+    private function get_boyfriendGroup() {
+        return PlayState.instance.boyfriendGroup ?? new FlxSpriteGroup(BOYFRIEND[0], BOYFRIEND[1]);
+    }
+    private function get_dadGroup() {
+        return PlayState.instance.dadGroup ?? new FlxSpriteGroup(OPPONENT[0], OPPONENT[1]);
+    }
+    private function get_gfGroup() {
+        return PlayState.instance.gfGroup ?? new FlxSpriteGroup(GIRLFRIEND[0], GIRLFRIEND[1]);
+    }
 
     public function new(stageFile:StageFile) {
         super();
@@ -41,14 +61,45 @@ class Stage extends FlxTypedGroup<FlxBasic> {
         this.CAMERA_SPEED = stageFile.camera_speed ?? 1.0;
 
         this.LETTERBOXXING = stageFile.letterboxxing ?? ClientPrefs.letterboxxing;
-
+        
+        _dummy = new FlxBasic();
         create();
     }
 
-    function create() {}
+    /**
+     * Generates the stage objects after all initilizaiton has been completed. Anything called after `super.create()` will be placed in the foreground.
+     */
+    function create() {
+        // Decided to move this here because i can lol
+        add(gfGroup);
+        infrontOfGirlfriendSprites.iter((spr:BGSprite) -> {
+            add(spr);
+        });
+        add(dadGroup);
+        add(boyfriendGroup);
+        add(_dummy);
+        foregroundSprites.iter((spr:BGSprite) -> {
+            add(spr);
+        });
+    }
     override function update(elapsed:Float) { 
         super.update(elapsed); 
     }
     public function stepHit(curStep:Int) {}
     public function beatHit(curBeat:Int) {}
+    public function sectionHit(curSection:Int, mustHitSection:Bool) {}
+    
+    public function addModchartSprite(sprite:ModchartSprite, foreground:Bool) {
+        var position:Int;
+        if (foreground)
+            position = members.indexOf(_dummy)+1;
+        else {
+            position = members.indexOf(gfGroup);
+            if (members.indexOf(boyfriendGroup) < position)
+                position = members.indexOf(boyfriendGroup);
+            else if (members.indexOf(dadGroup) < position)
+                position = members.indexOf(dadGroup);
+        }
+        insert(position, sprite);
+    }
 }
