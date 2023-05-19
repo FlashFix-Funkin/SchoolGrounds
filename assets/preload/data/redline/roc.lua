@@ -74,41 +74,11 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function onUpdate(elapsed)
+    if getPropertyFromGroup('notes', getProperty('notes.members.length') - 1, 'noteType') == 'No Animation' and getPropertyFromGroup('notes', getProperty('notes.members.length') - 1, 'isSustainNote') then
+        setProperty('roc.animation.curAnim.curFrame', 0)
+    end
+end
 
 
 
@@ -229,7 +199,7 @@ function opponentNoteHit(id, direction, noteType, isSustainNote)
     --Used when the opponent hits a note, duh
     -- left = 0, down = 1, up = 2, right = 3
     if noteType == noteTypeName then
-        playAnim(opponentName, direction, not isSustainNote)
+        playAnim(opponentName, direction, true)
         runTimer('idle'.. opponentName .. direction, singDuration)
     end
 end
