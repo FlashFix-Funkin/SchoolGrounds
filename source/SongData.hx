@@ -2,21 +2,21 @@ import haxe.ds.StringMap;
 
 class SongData {
     public static var songList:StringMap<{songName : String, artist : String}> = [
+        'kmfdm' => {
+            songName : "KMFDM",
+            artist : "BBpanzu"
+        },
         'bathroom-break' => {
             songName : "Bathroom Break",
             artist : "Requiem"
-        },
-        'mindfuck' => {
-            songName : "Mindfuck",
-            artist : "Requiem & KaranXD"
         },
         'redline' => {
             songName : "Redline",
             artist : "Requiem"
         },
-        'kmfdm' => {
-            songName : "KMFDM",
-            artist : "BBpanzu"
+        'mindfuck' => {
+            songName : "Mindfuck",
+            artist : "Requiem & KaranXD"
         },
         '2swag' => {
             songName : "2SWAG",
@@ -41,6 +41,18 @@ class SongData {
         'yuh' => {
             songName : "Yuh",
             artist : "Requiem"
+        },
+        'tutorial' => {
+            songName: "Tutorial",
+            artist: "ev1337"
+        },
+        'brainstorm' => {
+            songName: "Brainstorm",
+            artist: "Biddle3"
+        },
+        'pinkeye' => {
+            songName: "Pinkeye",
+            artist: "Octigone"
         }
     ];
 }

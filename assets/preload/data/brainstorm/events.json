@@ -1,0 +1,586 @@
+{
+	"song": {
+		"events": [
+			[
+				0,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				12000,
+				[
+					[
+						"Camera Follow Pos",
+						"930",
+						"880"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				24000,
+				[
+					[
+						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				36000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				37125,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				37500,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				38625,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				39000,
+				[
+					[
+						"Camera Follow Pos",
+						"930",
+						"880"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				42000,
+				[
+					[
+						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				44812.5,
+				[
+					[
+						"Focus Camera",
+						"BF",
+						""
+					]
+				]
+			],
+			[
+				48000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				60000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				60750,
+				[
+					[
+						"Set Subtitle",
+						"That's",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				61125,
+				[
+					[
+						"Set Subtitle",
+						"That's why",
+						""
+					]
+				]
+			],
+			[
+				61500,
+				[
+					[
+						"Set Subtitle",
+						"",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				62250,
+				[
+					[
+						"Set Subtitle",
+						"Oh",
+						""
+					]
+				]
+			],
+			[
+				62437.5,
+				[
+					[
+						"Set Subtitle",
+						"That's",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				62625,
+				[
+					[
+						"Set Subtitle",
+						"That's why",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				62906.25,
+				[
+					[
+						"Set Subtitle",
+						"",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				66000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				66750,
+				[
+					[
+						"Set Subtitle",
+						"You're",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				67125,
+				[
+					[
+						"Set Subtitle",
+						"You're done",
+						""
+					]
+				]
+			],
+			[
+				67500,
+				[
+					[
+						"Set Subtitle",
+						"",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				68250,
+				[
+					[
+						"Set Subtitle",
+						"Ah",
+						""
+					]
+				]
+			],
+			[
+				68437.5,
+				[
+					[
+						"Set Subtitle",
+						"You're",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				68625,
+				[
+					[
+						"Set Subtitle",
+						"You're done",
+						""
+					]
+				]
+			],
+			[
+				68906.25,
+				[
+					[
+						"Set Subtitle",
+						"",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				72000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					],
+					[
+						"Camera Follow Pos",
+						"930",
+						"880"
+					]
+				]
+			],
+			[
+				74062.5,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				75000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				76875,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				79500,
+				[
+					[
+						"Set Subtitle",
+						"That's",
+						""
+					]
+				]
+			],
+			[
+				79875,
+				[
+					[
+						"Set Subtitle",
+						"That's why",
+						""
+					]
+				]
+			],
+			[
+				80250,
+				[
+					[
+						"Set Subtitle",
+						"",
+						""
+					]
+				]
+			],
+			[
+				84000,
+				[
+					[
+						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				96000,
+				[
+					[
+						"Camera Follow Pos",
+						"930",
+						"880"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				100875,
+				[
+					[
+						"Set Subtitle",
+						"That's",
+						""
+					]
+				]
+			],
+			[
+				101250,
+				[
+					[
+						"Set Subtitle",
+						"That's why",
+						""
+					]
+				]
+			],
+			[
+				101625,
+				[
+					[
+						"Set Subtitle",
+						"",
+						""
+					]
+				]
+			],
+			[
+				108000,
+				[
+					[
+						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				109125,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				109500,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				110625,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				111000,
+				[
+					[
+						"Camera Follow Pos",
+						"930",
+						"880"
+					]
+				]
+			],
+			[
+				114000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					],
+					[
+						"Camera Follow Pos",
+						"",
+						""
+					]
+				]
+			],
+			[
+				116812.5,
+				[
+					[
+						"Focus Camera",
+						"BF",
+						""
+					]
+				]
+			],
+			[
+				120000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				132000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.6"
+					]
+				]
+			],
+			[
+				144000,
+				[
+					[
+						"Camera Follow Pos",
+						"930",
+						"880"
+					]
+				]
+			]
+		]
+	}
+}

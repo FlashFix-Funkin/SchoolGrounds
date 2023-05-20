@@ -1,0 +1,8 @@
+Focus the camera on one of the 3 characters
+
+Value 1 is the character the camera focuses on.
+(BF, Opponent or GF)
+
+Value 2 sets whether to stay focused, 
+leave empty to go back to normal.
+(True or Empty)
