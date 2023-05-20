@@ -274,6 +274,9 @@ class PlayState extends MusicBeatState
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
 
+	var subtitleTxt:FlxText;
+	var subtitleIcon:HealthIcon;
+
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
 	public static var seenCutscene:Bool = false;
@@ -712,12 +715,27 @@ class PlayState extends MusicBeatState
 			'songPercent', 0, 1);
 		timeBar.scrollFactor.set();
 		timeBar.createFilledBar(0xFF000000, 0xFFFFFFFF);
-		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
+		timeBar.numDivisions = 400;
 		timeBar.alpha = 0;
 		timeBar.visible = showTime;
 		add(timeBar);
 		add(timeTxt);
 		timeBarBG.sprTracker = timeBar;
+
+		subtitleTxt = new FlxText(0, 500, 0, '', 32);
+		subtitleTxt.cameras = [camHUD];
+		subtitleTxt.setFormat(Paths.font('vcr.ttf'), 32, 0xFFFFFFFF, CENTER);
+		subtitleTxt.screenCenter(X);
+		add(subtitleTxt);
+
+		subtitleIcon = new HealthIcon(dad.curCharacter);
+		subtitleIcon.cameras = [camHUD];
+		subtitleIcon.screenCenter(X);
+		subtitleIcon.setGraphicSize(Std.int(subtitleIcon.width * 0.65));
+		subtitleIcon.updateHitbox();
+		subtitleIcon.y = 400;
+		add(subtitleIcon);
+		subtitleIcon.visible = false;
 
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
@@ -3058,6 +3076,16 @@ class PlayState extends MusicBeatState
 
 	public function triggerEventNote(eventName:String, value1:String, value2:String) {
 		switch(eventName) {
+			case 'Set Subtitle': 
+				var a = value1.split(':');
+				var txt = a[0]; var name = a[1];
+				var color = FlxColor.fromString(value2) ?? 0xFFFFFFFF;
+				subtitleTxt.text = txt;
+				subtitleTxt.color = color;
+				subtitleTxt.screenCenter(X);
+
+				subtitleIcon.visible = name.length > 0;
+				subtitleIcon.changeIcon(name);
 			case 'Dadbattle Spotlight':
 				var val:Null<Int> = Std.parseInt(value1);
 				if(val == null) val = 0;
