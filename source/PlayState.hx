@@ -446,6 +446,7 @@ class PlayState extends MusicBeatState
 			case 'bathroom-break': curStage = 'warehouse';
 			case 'hall-pass': curStage = 'hallway';
 			case '2swag' | '2swag-erect': curStage = 'cafeteria';
+			case 'whippy': curStage = 'street';
 		}
 
 		var stageData:StageFile = StageData.getStageFile(curStage)
@@ -490,6 +491,7 @@ class PlayState extends MusicBeatState
 			case 'warehouse': stage = new stages.Warehouse(stageData);
 			case 'hallway': stage = new stages.Hallway(stageData);
 			case 'cafeteria': stage = new stages.Cafeteria(stageData);
+			case 'street': stage = new stages.Street(stageData);
 			default: stage = new stages.Stage(stageData);
 		}
 
