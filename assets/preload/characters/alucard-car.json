@@ -1,0 +1,158 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "Idle0"
+		},
+		{
+			"offsets": [
+				54,
+				-1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Left0"
+		},
+		{
+			"offsets": [
+				-3,
+				-35
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Down0"
+		},
+		{
+			"offsets": [
+				42,
+				40
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Up0"
+		},
+		{
+			"offsets": [
+				-12,
+				1
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Right0"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				10,
+				11,
+				12
+			],
+			"fps": 24,
+			"anim": "idle-loop",
+			"loop": true,
+			"name": "Idle0"
+		},
+		{
+			"offsets": [
+				54,
+				-1
+			],
+			"indices": [
+				2,
+				3,
+				4
+			],
+			"fps": 24,
+			"anim": "singLEFT-loop",
+			"loop": true,
+			"name": "Left0"
+		},
+		{
+			"offsets": [
+				-3,
+				-35
+			],
+			"indices": [
+				2,
+				3,
+				4
+			],
+			"fps": 24,
+			"anim": "singDOWN-loop",
+			"loop": true,
+			"name": "Down0"
+		},
+		{
+			"offsets": [
+				42,
+				40
+			],
+			"indices": [
+				2,
+				3,
+				4
+			],
+			"fps": 24,
+			"anim": "singUP-loop",
+			"loop": true,
+			"name": "Up0"
+		},
+		{
+			"offsets": [
+				-12,
+				1
+			],
+			"indices": [
+				2,
+				3,
+				4
+			],
+			"fps": 24,
+			"anim": "singRIGHT-loop",
+			"loop": true,
+			"name": "Right0"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/ALUCARD_CAR",
+	"position": [
+		-50,
+		150
+	],
+	"healthicon": "alucard",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		0,
+		0
+	],
+	"camera_position": [
+		40,
+		20
+	],
+	"sing_duration": 4.1,
+	"scale": 1
+}
