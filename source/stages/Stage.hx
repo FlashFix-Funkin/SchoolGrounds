@@ -3,6 +3,7 @@ package stages;
 import FunkinLua.ModchartSprite;
 import flixel.group.FlxSpriteGroup;
 import flixel.FlxBasic;
+import flixel.FlxObject;
 import StageData.StageFile;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -32,6 +33,8 @@ class Stage extends FlxTypedGroup<FlxBasic> {
     private var boyfriendGroup(get, never):FlxSpriteGroup;
     private var dadGroup(get, never):FlxSpriteGroup;
     private var gfGroup(get, never):FlxSpriteGroup;
+
+    public var comboPosition(default, null):FlxObject;
 
     
     private var _dummy:FlxBasic;
@@ -65,6 +68,7 @@ class Stage extends FlxTypedGroup<FlxBasic> {
         this.LETTERBOXXING = stageFile.letterboxxing ?? ClientPrefs.letterboxxing;
         
         _dummy = new FlxBasic();
+        comboPosition = new FlxObject(0, 0);
         create();
     }
 

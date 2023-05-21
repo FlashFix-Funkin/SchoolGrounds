@@ -928,7 +928,7 @@ class PlayState extends MusicBeatState
 		var erect:Bool = storyDifficulty == 1;
 		var filesPushed:Array<String> = [];
 		var foldersToCheck:Array<String> = [Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song.replace('-erect', '')) + (erect ? '/erect/' : '/'))];
-		trace(foldersToCheck);
+		//trace(foldersToCheck);
 
 		#if MODS_ALLOWED
 		foldersToCheck.insert(0, Paths.mods('data/' + Paths.formatToSongPath(SONG.song.replace('-erect', '')) + '/'));
@@ -1094,7 +1094,7 @@ class PlayState extends MusicBeatState
 
 				default:
 					if (stage?.introSequence != null) {
-						trace('playing intro sequence for $curStage');
+						//trace('playing intro sequence for $curStage');
 						inCutscene = true;
 						stage.introSequence();
 					} else
@@ -2881,7 +2881,7 @@ class PlayState extends MusicBeatState
 		if (!ClientPrefs.noReset && controls.RESET && canReset && !inCutscene && startedCountdown && !endingSong)
 		{
 			health = 0;
-			trace("RESET = True");
+			//trace("RESET = True");
 		}
 		doDeathCheck();
 
@@ -3712,8 +3712,8 @@ class PlayState extends MusicBeatState
 				{
 					var difficulty:String = CoolUtil.getDifficultyFilePath();
 
-					trace('LOADING NEXT SONG');
-					trace(Paths.formatToSongPath(PlayState.storyPlaylist[0]) + difficulty);
+					//trace('LOADING NEXT SONG');
+					//trace(Paths.formatToSongPath(PlayState.storyPlaylist[0]) + difficulty);
 
 					var winterHorrorlandNext = (Paths.formatToSongPath(SONG.song) == "eggnog");
 					if (winterHorrorlandNext)
@@ -3749,7 +3749,7 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				trace('WENT BACK TO FREEPLAY??');
+				//trace('WENT BACK TO FREEPLAY??');
 				WeekData.loadTheFirstEnabledMod();
 				cancelMusicFadeTween();
 				if(FlxTransitionableState.skipNextTransIn) {
@@ -3769,7 +3769,7 @@ class PlayState extends MusicBeatState
 		achievementObj = new AchievementObject(achieve, camOther);
 		achievementObj.onFinish = achievementEnd;
 		add(achievementObj);
-		trace('Giving achievement ' + achieve);
+		//trace('Giving achievement ' + achieve);
 	}
 	function achievementEnd():Void
 	{
@@ -3884,6 +3884,8 @@ class PlayState extends MusicBeatState
 		rating.visible = (!ClientPrefs.hideHud && showRating);
 		rating.x += ClientPrefs.comboOffset[0];
 		rating.y -= ClientPrefs.comboOffset[1];
+		rating.x += Std.int(stage?.comboPosition.x) ?? 0;
+		rating.y += Std.int(stage?.comboPosition.y) ?? 0;
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 		comboSpr.cameras = [camGame];
@@ -3894,6 +3896,8 @@ class PlayState extends MusicBeatState
 		comboSpr.visible = (!ClientPrefs.hideHud && showCombo);
 		comboSpr.x += ClientPrefs.comboOffset[0];
 		comboSpr.y -= ClientPrefs.comboOffset[1];
+		comboSpr.x += Std.int(stage?.comboPosition.x) ?? 0;
+		comboSpr.y += Std.int(stage?.comboPosition.y) ?? 0;
 		comboSpr.y += 60;
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
 
@@ -3937,6 +3941,9 @@ class PlayState extends MusicBeatState
 
 			numScore.x += ClientPrefs.comboOffset[2];
 			numScore.y -= ClientPrefs.comboOffset[3];
+
+			numScore.x += Std.int(stage?.comboPosition.x) ?? 0;
+			numScore.y += Std.int(stage?.comboPosition.y) ?? 0;
 
 			if (!PlayState.isPixelStage)
 			{

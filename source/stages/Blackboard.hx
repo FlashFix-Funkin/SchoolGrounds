@@ -2,6 +2,7 @@ package stages;
 
 import StageData.StageFile;
 import flixel.FlxSprite;
+import flixel.FlxObject;
 import flixel.math.FlxMath;
 import flixel.util.FlxGradient;
 
@@ -26,5 +27,7 @@ class Blackboard extends Stage {
 
         super.create();
         gfGroup.alpha = 0;
+
+        comboPosition = new FlxObject(-215, 0);
     }
 }
