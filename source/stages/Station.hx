@@ -144,7 +144,7 @@ class Station extends Stage {
         super.update(elapsed);
     }
 
-    override function sectionHit(curSection:Int, mustHitSection:Bool) {
+    override function sectionHit(curSection:Int, ?mustHitSection:Bool) {
         fgAlpha = mustHitSection ? 1 : 0.25;
         super.sectionHit(curSection, mustHitSection);
     }

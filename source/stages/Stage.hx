@@ -88,6 +88,7 @@ class Stage extends FlxTypedGroup<FlxBasic> {
     public function stepHit(curStep:Int) {}
     public function beatHit(curBeat:Int) {}
     public function sectionHit(curSection:Int, mustHitSection:Bool) {}
+    public function sectionHit(curSection:Int, ?mustHitSection:Bool) {}
     
     public function addModchartSprite(sprite:ModchartSprite, foreground:Bool) {
         var position:Int;
