@@ -1,5 +1,6 @@
 package;
 
+import stages.Classroom;
 import stages.Stage;
 import flixel.graphics.FlxGraphic;
 #if desktop
@@ -1017,8 +1018,85 @@ class PlayState extends MusicBeatState
 				case 'ugh' | 'guns' | 'stress':
 					tankIntro();
 
+				case 'kmfdm': // much to my disgust, i had to move this here :( the timers broke in the stage object ??
+					//camHUD.visible = false; looked bad lol
+					var blackScreen:FlxSprite = new FlxSprite(0,0).makeGraphic(2000, 1000, 0xFF000000);
+					blackScreen.screenCenter(XY);
+					add(blackScreen);
+					var flashbackTxt:FlxText = new FlxText(0,0,0, "6 Years ago...", 12);
+					flashbackTxt.setFormat(Paths.font('Helvetica.ttf'), 48);
+					flashbackTxt.screenCenter(XY);
+					add(flashbackTxt);
+
+					blackScreen.cameras = [camHUD];
+					flashbackTxt.cameras = [camHUD];
+					flashbackTxt.alpha = 0;
+
+					var hudElements:Array<FlxSprite> = [healthBarBG, healthBar, scoreTxt, timeBarBG, timeBar, timeTxt, botplayTxt, iconP1, iconP2];
+					for (spr in strumLineNotes) hudElements.push(spr);
+					for (obj in hudElements) obj.alpha = 0;
+
+					// this is... something....
+					FlxTween.tween(flashbackTxt, {alpha: 1}, 0.96, {
+						ease: FlxEase.quadInOut,
+						onComplete: (_:FlxTween) -> {
+							new FlxTimer().start(3.5, (_:FlxTimer) -> {
+								FlxTween.tween(flashbackTxt, {alpha: 0}, 0.96, {
+									ease: FlxEase.quadInOut,
+									onComplete: (_:FlxTween) -> {
+										new FlxTimer().start(2.1, (_:FlxTimer) -> {
+											FlxTween.tween(blackScreen, {alpha: 0}, 0.45, {
+												ease: FlxEase.quadInOut
+											});
+											var bell = cast(stage, Classroom).bell;
+											FlxG.sound.play(Paths.sound('KMFDM/i_guess'));
+											snapCamFollowToPos(920, 290);
+											FlxG.camera.focusOn(camFollow);
+											FlxG.camera.zoom = 1.5;
+											new FlxTimer().start(1.9, (_:FlxTimer) -> {
+												bell.animation.play('ringing');
+												new FlxTimer().start(0.88, (_:FlxTimer) -> {
+													FlxG.camera.shake(0.007, 0.12);
+													new FlxTimer().start(0.7, (_:FlxTimer) -> {
+														FlxG.camera.shake(0.002, 0.05);
+													});
+												});
+
+												new FlxTimer().start(2.3, (tmr:FlxTimer)-> {
+													camHUD.visible = true;
+													bell.animation.play('idle');
+													FlxTween.tween(FlxG.camera.target, {y: FlxG.camera.target.y + 350}, 2.5, {
+														ease: FlxEase.quadInOut
+													});
+													FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
+														ease: FlxEase.quadInOut,
+														onComplete: (twn:FlxTween) -> {
+															for (obj in hudElements) obj.alpha = 0;
+															for (obj in hudElements) {
+																FlxTween.tween(obj, {alpha: 1}, 0.55, {
+																	ease: FlxEase.quadInOut
+																});
+															}
+															moveCamera(true);
+															startCountdown();
+														}
+													});
+												});
+											});
+										});
+									}
+								});
+							});
+						}
+					});
+
 				default:
-					startCountdown();
+					if (stage?.introSequence != null) {
+						trace('playing intro sequence for $curStage');
+						inCutscene = true;
+						stage.introSequence();
+					} else
+						startCountdown();
 			}
 			seenCutscene = true;
 		}
@@ -3508,7 +3586,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function snapCamFollowToPos(x:Float, y:Float) {
+	public function snapCamFollowToPos(x:Float, y:Float) {
 		camFollow.set(x, y);
 		camFollowPos.setPosition(x, y);
 	}

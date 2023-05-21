@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bell.png">
+<SubTexture name="idle0000" x="0" y="0" width="427" height="250" frameX="0" frameY="0" frameWidth="427" frameHeight="250" />
+<SubTexture name="ringing0000" x="427" y="0" width="453" height="250" frameX="0" frameY="0" frameWidth="453" frameHeight="250" />
+<SubTexture name="ringing0001" x="0" y="250" width="453" height="250" frameX="0" frameY="0" frameWidth="453" frameHeight="250" />
+<SubTexture name="ringing0002" x="0" y="500" width="432" height="250" frameX="-21" frameY="0" frameWidth="453" frameHeight="250" />
+<SubTexture name="ringing0003" x="432" y="500" width="432" height="250" frameX="-21" frameY="0" frameWidth="453" frameHeight="250" />
+</TextureAtlas>

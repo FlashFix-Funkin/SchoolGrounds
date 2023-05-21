@@ -27,6 +27,8 @@ class Stage extends FlxTypedGroup<FlxBasic> {
     public var foregroundSprites:Array<BGSprite> = [];
     public var infrontOfGirlfriendSprites:Array<BGSprite> = [];
 
+    public var introSequence:Null<()->Void>;
+
     private var boyfriendGroup(get, never):FlxSpriteGroup;
     private var dadGroup(get, never):FlxSpriteGroup;
     private var gfGroup(get, never):FlxSpriteGroup;
@@ -87,7 +89,6 @@ class Stage extends FlxTypedGroup<FlxBasic> {
     }
     public function stepHit(curStep:Int) {}
     public function beatHit(curBeat:Int) {}
-    public function sectionHit(curSection:Int, mustHitSection:Bool) {}
     public function sectionHit(curSection:Int, ?mustHitSection:Bool) {}
     
     public function addModchartSprite(sprite:ModchartSprite, foreground:Bool) {
