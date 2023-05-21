@@ -441,6 +441,7 @@ class PlayState extends MusicBeatState
 		var songName:String = Paths.formatToSongPath(SONG.song);
 
 		switch (songName) {
+			case 'tutorial': curStage = 'blackboard';
 			case 'kmfdm': curStage = 'classroom';
 			case 'mindfuck' | 'brainstorm': curStage = 'train';
 			case 'redline': curStage = 'station';
@@ -486,6 +487,7 @@ class PlayState extends MusicBeatState
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 
 		switch (curStage) {
+			case 'blackboard': stage = new stages.Blackboard(stageData);
 			case 'classroom': stage = new stages.Classroom(stageData);
 			case 'train': stage = new stages.Train(stageData);
 			case 'station': stage = new stages.Station(stageData);
