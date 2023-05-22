@@ -471,10 +471,6 @@ class PlayState extends MusicBeatState
 				letterboxxing: ClientPrefs.letterboxxing
 			};
 
-			
-
-		defaultCamZoom = stageData.defaultZoom;
-		isPixelStage = stageData.isPixelStage;
 		BF_X = stageData.boyfriend[0];
 		BF_Y = stageData.boyfriend[1];
 		GF_X = stageData.girlfriend[0];
@@ -502,11 +498,14 @@ class PlayState extends MusicBeatState
 			default: stage = new stages.Stage(stageData);
 		}
 
+		defaultCamZoom = stageData.defaultZoom;
+		isPixelStage = stageData.isPixelStage;
+
 		cameraSpeed = stage.CAMERA_SPEED;
 		boyfriendCameraOffset = stage.CAMERA_BOYFRIEND;
 		opponentCameraOffset = stage.CAMERA_OPPONENT;
 		girlfriendCameraOffset = stage.CAMERA_GIRLFRIEND;
-		letterboxxing = stage.LETTERBOXXING;
+		letterboxxing = ClientPrefs.letterboxxing ? stage.LETTERBOXXING : false;
 
 		if(isPixelStage) {
 			introSoundsSuffix = '-pixel';
@@ -3801,7 +3800,8 @@ class PlayState extends MusicBeatState
 	public var totalPlayed:Int = 0;
 	public var totalNotesHit:Float = 0.0;
 
-	public var showCombo:Bool = true;
+	var showCombo:Bool = true;
+	public var showComboSpr:Bool = true;
 	public var showComboNum:Bool = true;
 	public var showRating:Bool = true;
 
@@ -3897,7 +3897,7 @@ class PlayState extends MusicBeatState
 		comboSpr.x = coolText.x;
 		comboSpr.acceleration.y = FlxG.random.int(200, 300);
 		comboSpr.velocity.y -= FlxG.random.int(140, 160);
-		comboSpr.visible = (!ClientPrefs.hideHud && showCombo);
+		comboSpr.visible = (!ClientPrefs.hideHud && showComboSpr);
 		comboSpr.x += ClientPrefs.comboOffset[0];
 		comboSpr.y -= ClientPrefs.comboOffset[1];
 		comboSpr.x += Std.int(stage?.comboPosition.x) ?? 0;
@@ -3963,7 +3963,7 @@ class PlayState extends MusicBeatState
 			numScore.acceleration.y = FlxG.random.int(200, 300);
 			numScore.velocity.y -= FlxG.random.int(140, 160);
 			numScore.velocity.x = FlxG.random.float(-5, 5);
-			numScore.visible = !ClientPrefs.hideHud;
+			numScore.visible = !ClientPrefs.hideHud && showComboNum;
 
 			if (combo >= 10 || combo == 0)
 			{
@@ -4788,7 +4788,7 @@ class PlayState extends MusicBeatState
 			return;
 		}
 		lastStepHit = curStep;
-		if (stage != null) stage.stepHit(curStep);
+		stage?.stepHit(curStep ?? 0);
 		setOnLuas('curStep', curStep);
 		callOnLuas('onStepHit', []);
 	}
@@ -4833,7 +4833,7 @@ class PlayState extends MusicBeatState
 
 		lastBeatHit = curBeat;
 
-		if (stage != null) stage.beatHit(curBeat);
+		stage?.beatHit(curBeat ?? 0);
 		setOnLuas('curBeat', curBeat); //DAWGG?????
 		callOnLuas('onBeatHit', []);
 	}
@@ -4867,7 +4867,7 @@ class PlayState extends MusicBeatState
 			setOnLuas('gfSection', SONG.notes[curSection].gfSection);
 		}
 
-		stage?.sectionHit(curSection ?? 0, SONG.notes[curSection].mustHitSection ?? false);
+		stage?.sectionHit(curSection ?? 0, SONG.notes[curSection]?.mustHitSection ?? false);
 		setOnLuas('curSection', curSection);
 		callOnLuas('onSectionHit', []);
 	}

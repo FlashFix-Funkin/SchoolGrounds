@@ -1,5 +1,6 @@
 package stages;
 
+import flixel.FlxObject;
 import flixel.math.FlxMath;
 import flixel.FlxG;
 import flixel.system.FlxSound;
@@ -131,6 +132,8 @@ class Station extends Stage {
         add(lightsUpper);
         foregroundSprites = [lightMiddle, lightLeft, lightRight, nebulaZorua, fgBars, gradient];
         alphaTracked = [nebulaZorua, fgBars];
+
+        comboPosition = new FlxObject(300, 200);
 
         super.create();
 

@@ -1,5 +1,6 @@
 package stages;
 
+import flixel.FlxObject;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import StageData.StageFile;
@@ -45,7 +46,11 @@ class Classroom extends Stage {
         add(bell);
         foregroundSprites.push(desk);
         if (overlay != null) foregroundSprites.push(overlay);
+
+        comboPosition = new FlxObject(175, 350);
+
         super.create();
+        PlayState.instance.letterboxxing = true; //gotta force this one sorry;
     }
 
     override function update(elapsed:Float) {

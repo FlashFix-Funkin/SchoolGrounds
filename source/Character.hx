@@ -112,6 +112,10 @@ class Character extends FlxSprite
 				addOffset('singRIGHT', -7, 6);
 				playAnim('idle');
 
+				healthIcon = 'daniel';
+				positionArray = [40, 0];
+				cameraPosition = [90, 0];
+
 			case 'swag-pica':
 				var tex = Paths.getSparrowAtlas('characters/picaSwagger', 'secrets');
 				frames = tex;
@@ -131,7 +135,10 @@ class Character extends FlxSprite
 				addOffset('singRIGHT', -9, 0);
 				playAnim('idle');
 
+				healthIcon = 'piquan';
 				positionArray = [0, 30];
+				cameraPosition = [170, 0];
+
 			default:
 				var characterPath:String = 'characters/' + curCharacter + '.json';
 

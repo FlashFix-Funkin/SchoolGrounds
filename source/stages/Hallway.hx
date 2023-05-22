@@ -39,6 +39,7 @@ class Hallway extends Stage {
             add(char);
         }
         super.create();
+        PlayState.instance.letterboxxing = true; //gotta force this one sorry;
     }
     override function update(elapsed:Float) {
         for (i => spr in bgScroll) {

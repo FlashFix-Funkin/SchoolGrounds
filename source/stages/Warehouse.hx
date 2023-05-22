@@ -1,5 +1,6 @@
 package stages;
 
+import flixel.FlxObject;
 import flixel.FlxG;
 import flixel.system.FlxSound;
 import openfl.display.BlendMode;
@@ -45,6 +46,8 @@ class Warehouse extends Stage {
         add(BACKGROUND);
         add(FOREGROUND);
         foregroundSprites = [rubble, lampoverlay, lamp];
+
+        comboPosition = new FlxObject(100, 50);
 
         super.create();
 

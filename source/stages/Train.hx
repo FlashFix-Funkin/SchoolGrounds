@@ -1,5 +1,6 @@
 package stages;
 
+import flixel.FlxObject;
 import flixel.FlxG;
 import flixel.math.FlxMath;
 import flixel.group.FlxSpriteGroup;
@@ -64,6 +65,8 @@ class Train extends Stage {
         closerBuildings.iter((spr:BGSprite) -> {
             add(spr);
         });
+
+        comboPosition = new FlxObject(40, 300);
         
         super.create();
         remove(dadGroup);
