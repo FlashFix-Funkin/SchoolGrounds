@@ -4863,7 +4863,7 @@ class PlayState extends MusicBeatState
 			setOnLuas('gfSection', SONG.notes[curSection].gfSection);
 		}
 
-		if (stage != null) stage.sectionHit(curSection, SONG.notes[curSection].mustHitSection);
+		stage?.sectionHit(curSection ?? 0, SONG.notes[curSection].mustHitSection ?? false);
 		setOnLuas('curSection', curSection);
 		callOnLuas('onSectionHit', []);
 	}
