@@ -450,6 +450,7 @@ class PlayState extends MusicBeatState
 			case '2swag' | '2swag-erect': curStage = 'cafeteria';
 			case 'whippy': curStage = 'street';
 		}
+		if (ClientPrefs.censoring && ['kmfdm', 'pinkeye', 'bathroom-break', 'redline', 'mindfuck', 'cockfight'].contains(songName)) curStage = 'censored';
 
 		var stageData:StageFile = StageData.getStageFile(curStage)
 			?? {
@@ -495,6 +496,7 @@ class PlayState extends MusicBeatState
 			case 'hallway': stage = new stages.Hallway(stageData);
 			case 'cafeteria': stage = new stages.Cafeteria(stageData);
 			case 'street': stage = new stages.Street(stageData);
+			case 'censored': stage = new stages.Censored(stageData, songName);
 			default: stage = new stages.Stage(stageData);
 		}
 

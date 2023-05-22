@@ -63,6 +63,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Parent-Friendly',
+			'WAAAAAAHHHHH!!!! I DONT LIKE COCK AND BALLS !!!!! WAAAAHHHH!!! I PISS AND SHIT MYSELF IN MY NAPPYYY !!!!!! WAAHHHH!!!',
+			'censoring',
+			'bool',
+			false);
+		addOption(option);
+
 		var option:Option = new Option('Letterboxxing',
 			'If checked, two black bars cover the top and bottom of the screen, making a cinematic effect',
 			'letterboxxing',

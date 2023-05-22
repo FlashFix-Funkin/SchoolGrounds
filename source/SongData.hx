@@ -7,7 +7,7 @@ class SongData {
             artist : "BBpanzu"
         },
         'bathroom-break' => {
-            songName : "Bathroom Break",
+            songName : !ClientPrefs.censoring ? "Bathroom Break" : "Potty Break",
             artist : "Requiem"
         },
         'redline' => {
@@ -15,7 +15,7 @@ class SongData {
             artist : "Requiem"
         },
         'mindfuck' => {
-            songName : "Mindfuck",
+            songName : !ClientPrefs.censoring ? "Mindfuck" : "Brainfart",
             artist : "Requiem & KaranXD"
         },
         '2swag' => {

@@ -20,6 +20,7 @@ class ClientPrefs {
 	public static var framerate:Int = 60;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
+	public static var censoring:Bool = false;
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
 	public static var noteOffset:Int = 0;
@@ -99,6 +100,7 @@ class ClientPrefs {
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.opponentStrums = opponentStrums;
 		FlxG.save.data.letterboxxing = letterboxxing;
+		FlxG.save.data.censoring = censoring;
 		FlxG.save.data.showFPS = showFPS;
 		FlxG.save.data.flashing = flashing;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
@@ -153,6 +155,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.letterboxxing != null) {
 			letterboxxing = FlxG.save.data.letterboxxing;
+		}
+		if(FlxG.save.data.censoring != null) {
+			censoring = FlxG.save.data.censoring;
 		}
 		if(FlxG.save.data.showFPS != null) {
 			showFPS = FlxG.save.data.showFPS;

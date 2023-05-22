@@ -1,0 +1,33 @@
+{
+	"storyName": "COCK",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "",
+	"weekBefore": "",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"Cockfight",
+			"cassandra",
+			[
+				66,
+				20,
+				35
+			],
+			"Phallic Phight"
+		]
+	],
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Cock"
+}
