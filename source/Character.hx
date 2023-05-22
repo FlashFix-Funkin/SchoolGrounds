@@ -95,7 +95,43 @@ class Character extends FlxSprite
 		switch (curCharacter)
 		{
 			//case 'your character name in case you want to hardcode them instead':
+			case 'swag-daniel':
+				var tex = Paths.getSparrowAtlas('characters/danielSwagger', 'secrets');
+				frames = tex;
 
+				quickAnimAdd('idle', 'daniel idle');
+				quickAnimAdd('singLEFT', 'daniel left0');
+				quickAnimAdd('singDOWN', 'daniel down0');
+				quickAnimAdd('singUP', 'daniel up0');
+				quickAnimAdd('singRIGHT', 'daniel right0');
+
+				addOffset('idle', 0, 0);
+				addOffset('singLEFT', -7, 5);
+				addOffset('singDOWN', 3, -12);
+				addOffset('singUP', 0, 21);
+				addOffset('singRIGHT', -7, 6);
+				playAnim('idle');
+
+			case 'swag-pica':
+				var tex = Paths.getSparrowAtlas('characters/picaSwagger', 'secrets');
+				frames = tex;
+
+				quickAnimAdd('idle', 'pico idle');
+				quickAnimAdd('singLEFT', 'pico left0');
+				quickAnimAdd('singDOWN', 'pico down0');
+				quickAnimAdd('singUP', 'pico up0');
+				quickAnimAdd('singRIGHT', 'pico right0');
+
+				originalFlipX = true;
+
+				addOffset('idle', 0, 0);
+				addOffset('singLEFT', -1, 2);
+				addOffset('singDOWN', 6, -3);
+				addOffset('singUP', 0, 16);
+				addOffset('singRIGHT', -9, 0);
+				playAnim('idle');
+
+				positionArray = [0, 30];
 			default:
 				var characterPath:String = 'characters/' + curCharacter + '.json';
 
@@ -247,6 +283,8 @@ class Character extends FlxSprite
 
 		switch(curCharacter)
 		{
+			case 'swag-pica':
+				flipX = false;
 			case 'pico-speaker':
 				skipDance = true;
 				loadMappedAnims();

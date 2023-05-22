@@ -56,7 +56,7 @@
 	<assets path="assets/preload" rename="assets" exclude="*.mp3"  unless="web"/>
 	
 	<assets path="assets/secrets" rename="assets" exclude="*.ogg" if="web"/>
-	<assets path="assets/secrets" embed='true' exclude="*.mp3" unless="web"/>
+	<assets path="assets/secrets" embed='true' library='secrets' exclude="*.mp3" unless="web"/>
 
 	<!-- DONT ENABLE THIS -->
 	<define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>

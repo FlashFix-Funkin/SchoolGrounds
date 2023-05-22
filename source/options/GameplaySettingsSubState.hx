@@ -64,7 +64,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Parent-Friendly',
-			'WAAAAAAHHHHH!!!! I DONT LIKE COCK AND BALLS !!!!! WAAAAHHHH!!! I PISS AND SHIT MYSELF IN MY NAPPYYY !!!!!! WAAHHHH!!!',
+			'There\'s cock n balls in this mod. if ur a whiney piss baby, you\'ll prolly turn this on',
 			'censoring',
 			'bool',
 			false);

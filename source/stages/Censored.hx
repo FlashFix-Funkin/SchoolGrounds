@@ -6,7 +6,7 @@ class Censored extends Stage {
     var img:BGSprite;
     var songName:String;
     public override function new(stageData:StageFile, songName:String) {
-        Paths.setCurrentLevel('shared');
+        Paths.setCurrentLevel('secrets');
         this.songName = songName;
         super(stageData);
     }

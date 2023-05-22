@@ -487,6 +487,8 @@ class PlayState extends MusicBeatState
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 
+		var swag2SwagCheck:Bool = Highscore.getScore('2swag', 1) > 0 && FlxG.random.bool(20) && storyDifficulty == 1;
+
 		switch (curStage) {
 			case 'blackboard': stage = new stages.Blackboard(stageData);
 			case 'classroom': stage = new stages.Classroom(stageData);
@@ -494,7 +496,7 @@ class PlayState extends MusicBeatState
 			case 'station': stage = new stages.Station(stageData);
 			case 'warehouse': stage = new stages.Warehouse(stageData);
 			case 'hallway': stage = new stages.Hallway(stageData);
-			case 'cafeteria': stage = new stages.Cafeteria(stageData);
+			case 'cafeteria': stage = swag2SwagCheck ? new stages.SwagCafeteria(stageData) : new stages.Cafeteria(stageData);
 			case 'street': stage = new stages.Street(stageData);
 			case 'censored': stage = new stages.Censored(stageData, songName);
 			default: stage = new stages.Stage(stageData);
